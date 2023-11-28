@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
+
+#navBar {
+    margin-top: 10px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 2.5rem;
+    width: 100%;
+    gap: 3rem;
+}
+
+#navBar > div {
+    display: flex;
+    gap: 10px;
+    height: 2.5rem;
+}
+
+#navBar > div > a {
+    font-family: "Carter One";
+    font-size: 1rem;
+    color: white;
+    text-decoration-line:none;
+    align-self: flex-end;
+}
+
+#navBar > div > img {
+    align-self: center;
+    margin: 10px;
+}
+
+#background > img{
+    position: fixed;
+    z-index: -1;
+    width: 250vh;
+    height: 150vh;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+#searchBar {
+    position: fixed;
+    margin-top: 250px;
+    width: 60%;
+    height: 35px;
+    border-radius: 25px;
+    border: white;
+    padding: 0;
+}
+.box > h1 {
+    margin-top: 90px;
+    position: fixed;
+    font-family: "Carter One";
+    font-size: 50px;
+    color: white;
+}
+
+.hikes {
+    margin-top: 300px;
+    border-radius: 10px;
+    background-color: white;
+    width: 80%;
+    height: 400px;
+    opacity: 0.3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
