@@ -20,13 +20,12 @@ const pool = new Pool({
 
 console.log("hello");
 
-const sqlQuery = "select lastname from northwind.employee";
 
 // Endpoint to test database connectivity
 app.get('/test-db', async (req, res) => {
     try {
         const client = await pool.connect();
-        const result = await client.query("select lastname, firstname from northwind.employee");
+        const result = await client.query("select * from image_name_of_hike");
         client.release();
         res.send(result.rows);
     } catch (err) {

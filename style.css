@@ -66,14 +66,33 @@ body {
 }
 
 .hikes {
+    position: relative;
     margin-top: 300px;
     border-radius: 10px;
     background-color: white;
     width: 80%;
     height: 400px;
-    opacity: 0.3;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
+
+#hikename {
+    list-style: none;
+}
+
+#image-container {
+    height: 10px;
+}
+.indexhike > img{
+    height: 100px;
+}
+.indexhike > div {
+    font-family: "Arial Black";
+}
+
+.indexhike {
+    padding: 10px;
+}
+
 
 

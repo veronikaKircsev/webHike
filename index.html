@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <title>Let's Hike</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
 <div id="navBar">
     <div>
-    <img src="image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
-    <a href="create.html">Create Hike</a>
+        <img src="image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
+        <a href="create.html">Create Hike</a>
     </div>
     <div>
         <img src="image/icons8-login-67.png" alt="login" height="70%">
@@ -23,37 +24,16 @@
     <h1>Let's Hike</h1>
     <label for="searchBar"></label>
     <input type="search" id="searchBar" name="searchBar">
-<div class="hikes">
-    <div id="namesList"></div>
-</div>
+    <div class="hikes">
+    <div id = "hike"></div>
+
+    </div>
 </div>
 
 <script>
-    // Function to fetch data and update the HTML
-    function fetchDataAndUpdateList() {
-        fetch('http://localhost:30000/test-db')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const list = document.getElementById('namesList');
-                list.innerHTML = ''; // Clear existing list items, if any
 
-                // Create and append list items
-                data.forEach(item => {
-                    const listItem = document.createElement('div');
-                    listItem.textContent = item.lastname;
-                    list.appendChild(listItem);
-                });
-            })
-            .catch(error => console.error('Fetch error:', error));
-    }
+    fetchImageNameList();
 
-    // Call the function when the script loads
-    fetchDataAndUpdateList();
 </script>
 
 </body>
