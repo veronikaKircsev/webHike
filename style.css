@@ -72,10 +72,14 @@ body {
     background-color: white;
     width: 80%;
     height: 400px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
 }
+#hike{
+    padding: 20px;
+    display: inline-flex;
+    flex-flow: wrap;
+    gap: 20px;
 
+}
 #hikename {
     list-style: none;
 }
@@ -83,10 +87,10 @@ body {
 #image-container {
     height: 10px;
 }
-.indexhike > img{
+.indexhike > a > img{
     height: 100px;
 }
-.indexhike > div {
+.indexhike > a > div {
     font-family: "Arial Black";
 }
 

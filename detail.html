@@ -3,8 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
+<!-- Add an input field for the search query -->
+<input type="text" id="searchInput" placeholder="Search...">
+<button onclick="filterData()">Search</button>
+
+<!-- Display the filtered results in this container -->
+<div id="selected"></div>
+<div id="hike"></div>
+<script>
+    fetchImageNameList();
+    function filterData() {
+        // Get the search query from the input field
+        var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+        // Loop through the elements and show/hide based on the search query
+        var list = document.getElementById('hike');
+        var hikes = list.getElementsByClassName('indexhike');
+
+        for (var i = 0; i < hikes.length; i++) {
+            var hike = hikes[i];
+            var name = hike.getElementsByTagName('div')[0].textContent.toLowerCase();
+
+            // Check if the name includes the search query
+            if (name.includes(searchQuery)) {
+                hike.style.display = '';  // Show the element
+            } else {
+                hike.style.display = 'none';  // Hide the element
+            }
+        }
+    }
+</script>
 
 </body>
 </html>

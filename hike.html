@@ -5,6 +5,61 @@
     <title>Title</title>
 </head>
 <body>
+<div id="selected"></div>
+<script>
+    // Function to get the value of a specific query parameter from the URL
+    function getQueryParam(parameter) {
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        return urlParams.get(parameter);
+    }
 
+    // Get the value of the "selectedElement" query parameter
+    var selectedElement = getQueryParam('selectedElement');
+
+    // Now you can use the value to fetch data from the database or perform any other action
+    console.log('Selected element:', selectedElement);
+    // Fetch data from the database based on the selected element
+
+    function fetchImageName() {
+        fetch('http://localhost:30000/test-db')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const list = document.getElementById('selected');
+                list.innerHTML = ''; // Clear existing list items, if any
+
+                data.forEach(item => {
+                    if (item.name === selectedElement) {
+                        let base64 = item.image;
+
+                        const name = document.createElement('div');
+
+                        name.textContent = item.name;
+                        const hike = document.createElement('div');
+
+                        const img = new Image();
+
+                        img.src = base64;
+
+                        hike.className = "indexhike";
+                        //hike.appendChild(name);
+                        //hike.appendChild(img);
+
+                        hike.appendChild(name);
+                        hike.appendChild(img);
+                        list.appendChild(hike);
+                    }
+                });
+            })
+            .catch(error => console.error('Fetch error:', error));
+    }
+
+    fetchImageName();
+</script>
 </body>
 </html>
