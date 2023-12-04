@@ -18,14 +18,48 @@ const pool = new Pool({
     port: process.env.PGPORT,
 })
 
-console.log("hello");
-
 
 // Endpoint to test database connectivity
-app.get('/test-db', async (req, res) => {
+app.get('/image-name-list-db', async (req, res) => {
     try {
         const client = await pool.connect();
         const result = await client.query("select * from image_name_of_hike");
+        client.release();
+        res.send(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+});
+
+app.get('/short-info-db', async (req, res) => {
+    try {
+        const client = await pool.connect();
+        const result = await client.query("select * from short_info");
+        client.release();
+        res.send(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+});
+
+app.get('/month-db', async (req, res) => {
+    try {
+        const client = await pool.connect();
+        const result = await client.query("select monthName, hikeId from hikes.month");
+        client.release();
+        res.send(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+    }
+});
+
+app.get('/hike-db', async (req, res) => {
+    try {
+        const client = await pool.connect();
+        const result = await client.query("select * from hole_hike");
         client.release();
         res.send(result.rows);
     } catch (err) {

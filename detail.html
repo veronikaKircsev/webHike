@@ -3,38 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript" src="main.js"></script>
 </head>
 <body>
+<div id="navBar">
+    <div>
+        <img src="image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
+        <a href="create.html">Create Hike</a>
+    </div>
+    <div>
+        <img src="image/icons8-login-67.png" alt="login" height="70%">
+    </div>
+</div>
+<picture id="background">
+    <img src="image/quairaing-540122_1280.jpg" alt = "cliff adventures">
+</picture>
 <!-- Add an input field for the search query -->
 <input type="text" id="searchInput" placeholder="Search...">
-<button onclick="filterData()">Search</button>
+<button onclick="filterData()">Filter</button>
 
 <!-- Display the filtered results in this container -->
-<div id="selected"></div>
-<div id="hike"></div>
+
+<div id="dHike"></div>
 <script>
-    fetchImageNameList();
-    function filterData() {
-        // Get the search query from the input field
-        var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+   document.addEventListener("keydown", function (event) {
+       if (event.key === "Enter")
+           filterData();
 
-        // Loop through the elements and show/hide based on the search query
-        var list = document.getElementById('hike');
-        var hikes = list.getElementsByClassName('indexhike');
+   })
+    const urlParams = new URLSearchParams(window.location.search);
+    const paramValue = urlParams.get('param');
 
-        for (var i = 0; i < hikes.length; i++) {
-            var hike = hikes[i];
-            var name = hike.getElementsByTagName('div')[0].textContent.toLowerCase();
+    fetchShortList(paramValue);
 
-            // Check if the name includes the search query
-            if (name.includes(searchQuery)) {
-                hike.style.display = '';  // Show the element
-            } else {
-                hike.style.display = 'none';  // Hide the element
-            }
-        }
-    }
 </script>
 
 </body>

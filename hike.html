@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheets" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <style>
+
+        #map { height: 400px;
+            width: 400px;}
+
+    </style>
 </head>
 <body>
+
 <div id="selected"></div>
+
 <script>
     // Function to get the value of a specific query parameter from the URL
     function getQueryParam(parameter) {
@@ -21,8 +36,8 @@
     console.log('Selected element:', selectedElement);
     // Fetch data from the database based on the selected element
 
-    function fetchImageName() {
-        fetch('http://localhost:30000/test-db')
+    function fetchHike() {
+        fetch('http://localhost:30000/hike-db')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -36,30 +51,41 @@
                 data.forEach(item => {
                     if (item.name === selectedElement) {
                         let base64 = item.image;
-
                         const name = document.createElement('div');
-
                         name.textContent = item.name;
                         const hike = document.createElement('div');
-
                         const img = new Image();
-
                         img.src = base64;
+                        hike.className = "hike";
+                        console.log(item.starting_point + "hello");
+                        const coordinates = item.starting_point.split(', ');
+                        console.log(coordinates[0]);
 
-                        hike.className = "indexhike";
-                        //hike.appendChild(name);
-                        //hike.appendChild(img);
+                        const hikeMap = document.createElement('div');
+                        hikeMap.id = 'map';
+                        console.log(hikeMap);
+
+                        hike.appendChild(hikeMap);
 
                         hike.appendChild(name);
                         hike.appendChild(img);
                         list.appendChild(hike);
+
+
+                        const map = L.map('map').setView([coordinates[0], coordinates[1]], 13);
+                        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            maxZoom: 19,
+                        }).addTo(map);
+
+
+                        //const hikeMap = document.getElementById('map');
                     }
                 });
             })
             .catch(error => console.error('Fetch error:', error));
     }
 
-    fetchImageName();
+    fetchHike();
 </script>
 </body>
 </html>
