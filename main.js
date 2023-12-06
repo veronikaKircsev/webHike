@@ -58,15 +58,39 @@ function fetchShortList(filter) {
                     name.textContent = item.name;
                     name.className = "dHikeName";
                     const hike = document.createElement('div');
-                    //hike.className = "dHike"
                     const length = document.createElement('div');
+                    const leng = document.createElement('div');
                     length.className = "dLength";
-                    length.textContent = item.length + ' km';
+                    leng.textContent = item.length + ' km ';
+                    const himg = new Image();
+                    himg.style.height = "20px";
+                    himg.src = "./image/icons8-trekking-48.png";
+                    length.appendChild(himg);
+                    length.appendChild(leng);
                     const technique = document.createElement('div');
-                    technique.textContent = 'technique ' + item.technique;
+                    const tech = document.createElement('div');
+                    tech.textContent = 'Technique';
+                    tech.style.fontSize = "10px";
+                    const hills = document.createElement('div');
+                    for (let i = 0; i < item.technique; i++){
+                        const hill = new Image();
+                        hill.style.height = "20px";
+                        hill.src = "./image/icons8-mountains-67.png";
+                        hills.appendChild(hill);
+                    }
+                    technique.appendChild(hills);
+                    technique.appendChild(tech);
+                    technique.className = 'technique';
                     const duration = document.createElement('div');
-                    const dur = item.duration.slice(0, 5) + ' hours'
-                    duration.textContent = dur;
+                    const dur = item.duration.slice(0, 5);
+                    const du = document.createElement('div');
+                    const clock = new Image();
+                    clock.style.height = "15px";
+                    clock.src = "./image/icons8-time-50.png";
+                    du.textContent = dur;
+                    duration.appendChild(clock);
+                    duration.appendChild(du);
+                    duration.className = "duration";
                     const img = new Image();
                     img.src = base64;
                     hike.className = "dhike";
@@ -85,8 +109,16 @@ function fetchShortList(filter) {
                     region.textContent = item.region;
                     hike.appendChild(region);
                     const location = document.createElement('div');
+                    const loc = document.createElement('div');
+                    loc.className = 'location';
+                    const locimg = new Image();
+                    locimg.src = "./image/icons8-location-26.png"
+                    locimg.style.height = "16px";
+                    location.appendChild(locimg);
                     location.textContent = item.location;
-                    hike.appendChild(location);
+                    loc.appendChild(locimg);
+                    loc.appendChild(location)
+                    hike.appendChild(loc);
                     hike.appendChild(length);
                     hike.appendChild(technique);
                     hike.appendChild(duration);
@@ -94,7 +126,7 @@ function fetchShortList(filter) {
                     container.appendChild(hike);
                     console.log(item.hikeid);
                     const months = document.createElement('div');
-                    months.textContent = "It's recommended:";
+                    months.textContent = "The best months:";
                     fetchMonth(item.hikeid, months);
                     container.appendChild(months);
                     months.className = "monthsList"

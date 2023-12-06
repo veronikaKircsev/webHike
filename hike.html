@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheets" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -15,14 +14,31 @@
         #map { height: 400px;
             width: 400px;}
 
+        .leaflet-control-attribution{
+            display: none;
+        }
+
     </style>
+    <link rel="stylesheet" href="hike.css">
 </head>
 <body>
+<div id="navBar">
+    <div>
+        <img src="image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
+        <a href="create.html">Create Hike</a>
+    </div>
+    <div>
+        <img src="image/icons8-login-67.png" alt="login" height="70%">
+    </div>
+</div>
+
 
 <div id="selected"></div>
 
 <script>
+
     // Function to get the value of a specific query parameter from the URL
+
     function getQueryParam(parameter) {
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
@@ -57,28 +73,54 @@
                         const img = new Image();
                         img.src = base64;
                         hike.className = "hike";
-                        console.log(item.starting_point + "hello");
-                        const coordinates = item.starting_point.split(', ');
-                        console.log(coordinates[0]);
+                        const headBlock = document.createElement('div');
+                        headBlock.id = 'headBlock';
+                        headBlock.appendChild(img);
 
-                        const hikeMap = document.createElement('div');
-                        hikeMap.id = 'map';
-                        console.log(hikeMap);
 
-                        hike.appendChild(hikeMap);
+                        const myMap = document.createElement('div');
+                        myMap.id = 'map';
+                        headBlock.appendChild(myMap);
+
+
+
+
+
 
                         hike.appendChild(name);
-                        hike.appendChild(img);
+                        hike.appendChild(headBlock);
+
+
                         list.appendChild(hike);
 
 
-                        const map = L.map('map').setView([coordinates[0], coordinates[1]], 13);
+
+
+
+
+                        const start = item.starting_point.split(', ');
+
+                        const map = L.map('map').setView([start[0], start[1]], 13);
                         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                             maxZoom: 19,
                         }).addTo(map);
 
-
-                        //const hikeMap = document.getElementById('map');
+                        const mStart = new L.Marker([start[0], start[1]]).addTo(map);
+                        const first = item.stop_one.split(', ');
+                        const mFirst = new L.Marker([first[0], first[1]]).addTo(map);
+                        const second = item.stop_two.split(', ');
+                        const mSecond = new L.Marker([second[0], second[1]]).addTo(map);
+                        const three = item.stop_three.split(', ');
+                        const mThree = new L.Marker([three[0], three[1]]).addTo(map);
+                        const end = item.finishing_point.split(', ');
+                        const mEnd = new L.Marker([end[0], end[1]]).addTo(map);
+                        var polygon = L.polygon([
+                            [start[0], start[1]],
+                            [first[0], first[1]],
+                            [second[0], second[1]],
+                            [three[0], three[1]],
+                            [end[0], end[1]]
+                        ]).addTo(map);
                     }
                 });
             })
@@ -86,6 +128,10 @@
     }
 
     fetchHike();
+
+
+
+
 </script>
 </body>
 </html>

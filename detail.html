@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="detail.css">
     <script type="text/javascript" src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 <body>
 <div id="navBar">
@@ -14,18 +15,151 @@
     </div>
     <div>
         <img src="image/icons8-login-67.png" alt="login" height="70%">
+        <button id="toggleFilter" onclick="toggleFilter()"></button>
     </div>
 </div>
-<picture id="background">
-    <img src="image/quairaing-540122_1280.jpg" alt = "cliff adventures">
-</picture>
+
 <!-- Add an input field for the search query -->
-<input type="text" id="searchInput" placeholder="Search...">
-<button onclick="filterData()">Filter</button>
+<input type="text" id="searchInput" placeholder="Search by name, place or region">
 
 <!-- Display the filtered results in this container -->
 
+
 <div id="dHike"></div>
+<div id="filter">
+    <table>
+        <form action="filter()">
+            <tr>
+                <td>
+                    <label for="region">
+                        Region
+                    </label>
+                </td>
+                <td><input type="text" id="region" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="location">
+                    Location
+                </label>
+                </td>
+                <td><input type="text" id="location" />
+                </td>
+            </tr>
+            <tr>
+                <td><label for="duration">
+                    Duration
+                </label>
+                </td>
+                <td><div id="duration">
+                    <input class="min" name="range_1" type="range" min="0" max="24" value="0" step="0.10"/>
+                    <input class="max" name="range_1" type="range" min="0" max="24" value="1" step="0.10"/>
+                    <output id="minValue">hours</output>
+                    <output id="maxValue">hours</output>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="distance">
+                    Distance
+                </label>
+                </td>
+                <td><div id="distance">
+                    <input class="minDistance" name="range_1" type="range" min="0" max="100" value="0" step="0.10"/>
+                    <input class="maxDistance" name="range_1" type="range" min="0" max="100" value="5" step="0.10"/>
+                    <output id="minDistance">km</output>
+                    <output id="maxDistance">km</output>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="altitude">
+                    Altitude
+                </label>
+                </td>
+                <td><div id="altitude">
+                    <input class="minAltitude" name="range_1" type="range" min="0" max="10000" value="0" step="1"/>
+                    <input class="maxAltitude" name="range_1" type="range" min="0" max="10000" value="500" step="1"/>
+                    <output id="minAltitude"></output>
+                    <output id="maxAltitude"></output>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="strength">
+                    Strength
+                </label>
+                </td>
+                <td><div id="strength">
+                    <input class="minStrength" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxStrength" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
+                    <output id="minStrength"></output>
+                    <output id="maxStrength"></output>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="stamina">
+                    Stamina
+                </label>
+                </td>
+                <td><div id="stamina">
+                    <input class="minStamina" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxStamina" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
+                    <output id="minStamina"></output>
+                    <output id="maxStamina"></output>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="difficulty">
+                    Difficulty
+                </label>
+                </td>
+                <td><div id="difficulty">
+                    <input class="minDifficulty" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxDifficulty" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
+                    <output id="minDifficulty"></output>
+                    <output id="maxDifficulty"></output>
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="landscape">
+                    Landscape
+                </label>
+                </td>
+                <td><div id="landscape">
+                    <input class="minLandscape" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxLandscape" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
+                    <output id="minLandscape"></output>
+                    <output id="maxLandscape"></output>
+                </div>
+                </td>
+            </tr>
+
+            <tr><td>
+            <label>Choose month</label>
+            </td>
+                <td>
+                <input type="checkbox" id="january" name="january" value="january">
+                <label for="january"> January</label><br>
+                <input type="checkbox" id="february" name="february" value="february">
+                <label for="february">February</label><br>
+                <input type="checkbox" id="march" name="march" value="march">
+                <label for="march">March</label>
+                    <input type="checkbox" id="april" name="april" value="april">
+                    <label for="april">April</label><br>
+                    <input type="checkbox" id="may" name="may" value="may">
+                    <label for="may">May</label><br>
+                    <input type="checkbox" id="june" name="june" value="june">
+                    <label for="june">June</label>
+                </td>
+            </tr>
+
+        </form>
+    </table>
+</div>
 <script>
    document.addEventListener("keydown", function (event) {
        if (event.key === "Enter")
@@ -37,7 +171,60 @@
 
     fetchShortList(paramValue);
 
+   function toggleFilter() {
+       var x = document.getElementById("filter");
+       if (x.style.display === "none") {
+           x.style.display = "block";
+       } else {
+           x.style.display = "none";
+       }
+   }
+
+   function filter() {
+
+   }
+
+
+   const hour = " hours";
+   sliderOutPutWithValue(document.querySelector("#minValue"), document.querySelector(".min"), hour);
+   sliderOutPutWithValue(document.querySelector("#maxValue"), document.querySelector(".max"), hour);
+   const km = " km";
+   sliderOutPutWithValue(document.querySelector("#minDistance"), document.querySelector(".minDistance"), km);
+   sliderOutPutWithValue(document.querySelector("#maxDistance"), document.querySelector(".maxDistance"), km);
+   const m = " m";
+   sliderOutPutWithValue(document.querySelector("#minAltitude"), document.querySelector(".minAltitude"), m);
+   sliderOutPutWithValue(document.querySelector("#maxAltitude"), document.querySelector(".maxAltitude"), m);
+
+   sliderOutPut(document.querySelector("#minStrength"), document.querySelector(".minStrength"));
+   sliderOutPut(document.querySelector("#maxStrength"), document.querySelector(".maxStrength"));
+   sliderOutPut(document.querySelector("#minStamina"), document.querySelector(".minStamina"));
+   sliderOutPut(document.querySelector("#maxStamina"), document.querySelector(".maxStamina"));
+   sliderOutPut(document.querySelector("#minDifficulty"), document.querySelector(".minDifficulty"));
+   sliderOutPut(document.querySelector("#maxDifficulty"), document.querySelector(".maxDifficulty"));
+   sliderOutPut(document.querySelector("#minLandscape"), document.querySelector(".minLandscape"));
+   sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".maxLandscape"));
+
+
+   function sliderOutPutWithValue(outputId, inputClass, messaurment) {
+       const value = outputId;
+       const input = inputClass;
+       value.textContent = input.value;
+       input.addEventListener("input", (event) => {
+           value.textContent = event.target.value + messaurment;
+       });
+   }
+   function sliderOutPut(outputId, inputClass) {
+       const value = outputId;
+       const input = inputClass;
+       value.textContent = input.value;
+       input.addEventListener("input", (event) => {
+           value.textContent = event.target.value;
+       });
+   }
+
+
 </script>
+
 
 </body>
 </html>

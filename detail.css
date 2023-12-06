@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
+body {
+    background-image: url("./image/quairaing-540122_1280.jpg");
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    grid-template-rows: 1fr 1fr 1fr;
+
+}
+
+#navBar {
+    margin-top: 10px;
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 2.5rem;
+    width: 100%;
+    gap: 3rem;
+    grid-row-start: 1;
+}
+
+#navBar > div {
+    display: flex;
+    gap: 10px;
+    height: 2.5rem;
+}
+
+#navBar > div > a {
+    font-family: "Carter One";
+    font-size: 1rem;
+    color: white;
+    text-decoration-line:none;
+    align-self: flex-end;
+}
+
+#navBar > div > img {
+    align-self: center;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+#dHike{
+    display: flex;
+    flex-direction: column;
+}
+
+.hikeContainer > a > img{
+    height: 150px;
+}
+.hikeContainer > a > div {
+    font-family: "Carter One";
+    font-size: 20px;
+    color: black;
+    text-decoration-line: none;
+
+}
+.hikeContainer {
+    background-color: white;
+    position: relative;
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.40fr 0.30fr 1fr 0.30fr 1fr;
+    grid-template-rows: 1fr;
+}
+.hikeTag{
+    grid-area: 1/1/1/1;
+    text-decoration: none;
+}
+.dhike {
+    grid-area: 1/3/1/3;
+    align-self: center;
+
+}
+.dhike > div {
+    font-family: "Archivo Black";
+
+}
+#dHike{
+    position: absolute;
+    width: 50%;
+    margin-top: 200px;
+}
+.monthsList {
+    grid-area: 1/5/1/5;
+    align-self: center;
+    font-family: "Archivo Black";
+    font-size: 12px;
+}
+.monthsList > li {
+    list-style-type: none;
+    font-family: "Archivo Black";
+    font-size: 16px;
+    padding: 3px;
+}
+
+#searchInput{
+    position: fixed;
+    border-radius: 10px;
+    width: 40%;
+    height: 30px;
+    margin-top: 100px;
+    margin-left: 50px;
+    border-color: white;
+    border-style: none;
+    padding: 5px 5px 5px 10px;
+}
+
+.dHikeName {
+    text-decoration-line:none;
+}
+
+#filter {
+    background-color: white;
+    border-radius: 10px;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    margin-top: 100px;
+}
+.location {
+    display: inline-flex;
+    gap: 5px;
+    padding: 5px;
+}
+.dLength {
+    display: inline-flex;
+    gap: 2px;
+    padding: 5px;
+}
+.duration {
+    display: inline-flex;
+    gap: 4px;
+    padding: 5px;
+}
+
+.technique {
+    padding: 5px;
+}
+
+.more {
+    align-self: center;
+    border-radius: 5px;
+}
+
+#toggleFilter{
+    background-image: url("./image/icons8-search-more-48.png");
+    height: 45px;
+    width: 45px;
+    border-radius: 5px;
+    margin-right: 50px;
+}
+
+
+input[type='range'] {
+    width: 210px;
+    height: 30px;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+}
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: none;
+}
+input[type='range']::-webkit-slider-runnable-track {
+    width: 200px;
+    height: 1px;
+    background: #003D7C;
+}
+
+input[type='range']:nth-child(2)::-webkit-slider-runnable-track{
+    background: none;
+}
+
+input[type='range']::-webkit-slider-thumb {
+    position: relative;
+    height: 15px;
+    width: 15px;
+    margin-top: -7px;
+    background: #fff;
+    border: 1px solid #003D7C;
+    border-radius: 25px;
+    z-index: 1;
+}
+
+
+input[type='range']:nth-child(1)::-webkit-slider-thumb{
+    z-index: 2;
+}
+
+#duration{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#duration input{
+    position: absolute;
+    align-self: center;
+}
+
+#distance{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#distance input{
+    position: absolute;
+    align-self: center;
+}
+
+#strength{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#strength input{
+    position: absolute;
+    align-self: center;
+}
+
+#stamina{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#stamina input{
+    position: absolute;
+    align-self: center;
+}
+
+#difficulty{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#difficulty input{
+    position: absolute;
+    align-self: center;
+}
+
+#landscape{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#landscape input{
+    position: absolute;
+    align-self: center;
+}
+
+#altitude{
+    position: relative;
+    height: 45px;
+    width: 210px;
+    display: inline-flex;
+    justify-content: space-between;
+
+
+}
+#altitude input{
+    position: absolute;
+    align-self: center;
+}
+
+
