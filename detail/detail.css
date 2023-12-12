@@ -1,25 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
 body {
-    background-image: url("./image/quairaing-540122_1280.jpg");
+    background-image: url("../image/quairaing-540122_1280.jpg");
     background-attachment: fixed;
     display: grid;
     grid-template-columns: 1.25fr 0.75fr;
     grid-template-rows: 1fr 1fr 1fr;
+    margin: 0;
+
 
 }
 
-
-#navBar {
+.nav {
     margin-top: 10px;
     position: fixed;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     height: 2.5rem;
     width: 100%;
     gap: 3rem;
     grid-row-start: 1;
+    z-index: 5;
+}
+
+.fixedNav {
+    background-color: #6C5F5B;
+    position: fixed;
+    margin-top: 0;
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    gap: 0rem;
+    grid-row-start: 1;
+    z-index: 5;
 }
 
 #navBar > div {
@@ -36,22 +49,18 @@ body {
     align-self: flex-end;
 }
 
-#navBar > div > img {
+.nav > div > img {
     align-self: center;
     border-radius: 5px;
     margin: 10px;
 }
 
 
-body {
-    padding: 0;
-    margin: 0;
-}
-
 #dHike{
     display: flex;
     flex-direction: column;
 }
+
 
 .hikeContainer > a > img{
     height: 150px;
@@ -61,6 +70,7 @@ body {
     font-size: 20px;
     color: black;
     text-decoration-line: none;
+    margin-bottom: 20px;
 
 }
 .hikeContainer {
@@ -72,7 +82,7 @@ body {
     padding: 20px;
     width: 100%;
     display: grid;
-    grid-template-columns: 1.40fr 0.30fr 1fr 0.30fr 1fr;
+    grid-template-columns: 2fr 1fr 1.5fr;
     grid-template-rows: 1fr;
 }
 .hikeTag{
@@ -80,8 +90,10 @@ body {
     text-decoration: none;
 }
 .dhike {
-    grid-area: 1/3/1/3;
-    align-self: center;
+    grid-area: 1/2/1/2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 .dhike > div {
@@ -94,8 +106,11 @@ body {
     margin-top: 200px;
 }
 .monthsList {
-    grid-area: 1/5/1/5;
-    align-self: center;
+    grid-area: 1/3/1/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
     font-family: "Archivo Black";
     font-size: 12px;
 }
@@ -106,8 +121,8 @@ body {
     padding: 3px;
 }
 
-#searchInput{
-    position: fixed;
+.fix{
+    position: absolute;
     border-radius: 10px;
     width: 40%;
     height: 30px;
@@ -117,6 +132,30 @@ body {
     border-style: none;
     padding: 5px 5px 5px 10px;
 }
+
+.fixed {
+    position: fixed;
+    border-radius: 10px;
+    width: 40%;
+    height: 25px;
+    margin-top: 0;
+    margin-left: 50px;
+    border-color: white;
+    border-style: none;
+    padding: 5px 5px 5px 10px;
+    z-index: 10;
+}
+
+.fixedBack{
+    width: 100%;
+    position: fixed;
+    background-color: #6C5F5B;
+    height: 50px;
+    margin-top: 40px;
+    z-index: 5;
+
+}
+
 
 .dHikeName {
     text-decoration-line:none;
@@ -155,7 +194,7 @@ body {
 }
 
 #toggleFilter{
-    background-image: url("./image/icons8-search-more-48.png");
+    background-image: url("../image/icons8-search-more-48.png");
     height: 45px;
     width: 45px;
     border-radius: 5px;

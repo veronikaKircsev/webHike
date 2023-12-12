@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drive_to</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+    <script type="text/javascript" src="../main.js"></script>
+    <style>
+
+        #map {
+            height: 600px;
+
+            margin: 100px;
+        }
+
+        .leaflet-control-attribution{
+            display: none;
+        }
+
+        body {
+            background-color: #F6F1EE;
+        }
+
+        #navBar {
+            margin-top: 10px;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            height: 2.5rem;
+            width: 100%;
+            gap: 3rem;
+        }
+
+        #navBar > div {
+            display: flex;
+            gap: 10px;
+            height: 2.5rem;
+        }
+
+        #navBar > div > a {
+            font-family: "Carter One";
+            font-size: 1rem;
+            color: #4F4A45;
+            text-decoration-line:none;
+            align-self: flex-end;
+        }
+
+        #navBar > div > img {
+            align-self: center;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="navBar">
+    <div>
+        <img src="../image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
+        <a href="../create.html">Create Hike</a>
+    </div>
+    <div>
+        <img src="../image/icons8-login-67.png" alt="login" height="70%">
+    </div>
+</div>
+
+<div id="map"></div>
+<script>
+    navigator.geolocation.getCurrentPosition(
+        function (position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            const map =
+                L.map('map').setView([latitude, longitude], 13);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+            }).addTo(map);
+
+            const myLocation = new L.Marker([latitude, longitude]).addTo(map);
+            const start = getQueryParam('start').split(',');
+            console.log(start);
+            const startLocation = new L.Marker([start[0], start[1]]).addTo(map);
+
+            const linePoints = [[start[0], start[1]],[latitude,longitude]];
+
+            const route = L.Routing.control({
+                waypoints: linePoints
+            }).addTo(map);
+
+            const polyline = L.polyline(linePoints);
+
+            map.fitBounds(polyline.getBounds());
+
+
+
+
+
+        },
+        function () {
+            alert("Geo Location not supported");
+        }
+    );
+</script>
+
+</body>
+</html>
