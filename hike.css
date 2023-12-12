@@ -138,3 +138,13 @@ body {
     justify-content: flex-end;
 }
 
+.leaflet-routing-container{
+    display: none;
+}
+leaflet-bar{
+    display: none;
+}
+leaflet-control{
+    display: none;
+}
+
