@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
 body {
     background-image: url("./image/quairaing-540122_1280.jpg");
+    background-attachment: fixed;
     display: grid;
     grid-template-columns: 1.25fr 0.75fr;
     grid-template-rows: 1fr 1fr 1fr;

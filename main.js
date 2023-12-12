@@ -170,16 +170,15 @@ function filterData() {
     // Loop through the elements and show/hide based on the search query
     var list = document.getElementById('dHike');
     var hikes = list.getElementsByClassName('hikeContainer');
-    console.log(list);
+    console.log(hikes.length);
+
 
     for (var i = 0; i < hikes.length; i++) {
-        console.log(hikes[i]);
+
         var hike = hikes[i];
         var name = hike.getElementsByTagName('div')[0].textContent.toLowerCase();
         var region = hike.getElementsByTagName('div')[2].textContent.toLowerCase();
         var location = hike.getElementsByTagName('div')[3].textContent.toLowerCase();
-        console.log(name);
-        console.log(region);
 
         // Check if the name includes the search query
         if (name.includes(searchQuery) || location.includes(searchQuery) || region.includes(searchQuery)) {
