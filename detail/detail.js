@@ -92,7 +92,7 @@ function fetchShortList(filter) {
                     //hike.appendChild(img);
                     const tag = document.createElement('a');
                     tag.className = "hikeTag";
-                    tag.href = `hike/hike.html?selectedElement=${item.name}`;
+                    tag.href = `../hike/hike.html?selectedElement=${item.name}`;
                     tag.title = item.name;
                     tag.appendChild(name);
                     tag.appendChild(img);
