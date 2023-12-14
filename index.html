@@ -10,7 +10,6 @@
 <div id="navBar">
     <div>
         <img src="image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
-        <a href="create.html">Create Hike</a>
     </div>
     <div>
         <img src="image/icons8-login-67.png" alt="login" height="70%">
@@ -19,29 +18,15 @@
 
 <div class="box">
     <h1>Let's Hike</h1>
-    <label for="searchBar"></label>
-    <input type="search" id="searchBar" name="searchBar" placeholder="  Please enter a name, region or place">
+    <label for="search"></label>
+    <input type="search" id="search" name="search" placeholder="  Please enter a name, region or place">
     <div class="hikes">
     <div id = "hike"></div>
 
     </div>
 </div>
 
-<script>
-
-    fetchImageNameList();
-
-    document.addEventListener("keydown", function (event){
-        const textIn = document.getElementById("searchBar").value.toLowerCase();
-        console.log(textIn);
-        if (event.key === 'Enter'){
-                console.log(event);
-                window.location.href = "detail/detail.html?param="+ encodeURIComponent(textIn);
-
-        }
-    })
-
-</script>
-
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

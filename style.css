@@ -48,7 +48,7 @@ body {
     align-items: center;
     gap: 100px;
 }
-#searchBar {
+#search {
     position: fixed;
     margin-top: 250px;
     width: 60%;

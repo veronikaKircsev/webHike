@@ -1,5 +1,5 @@
 function fetchShortList(filter) {
-    fetch('http://localhost:30000/short-info-db')
+    fetch('http://localhost:30000/hike-db')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -120,12 +120,30 @@ function fetchShortList(filter) {
                     hike.appendChild(duration);
                     container.appendChild(tag);
                     container.appendChild(hike);
-                    console.log(item.hikeid);
                     const months = document.createElement('div');
                     months.textContent = "The best months:";
                     fetchMonth(item.hikeid, months);
                     container.appendChild(months);
-                    months.className = "monthsList"
+                    months.className = "monthsList";
+                    const hidden = document.createElement('div');
+                    const altitude = document.createElement('div');
+                    const alti = Math.floor(item.altitude);
+                    altitude.textContent = alti;
+                    hidden.appendChild(altitude);
+                    const strength = document.createElement('div');
+                    strength.textContent = item.strength;
+                    hidden.appendChild(strength);
+                    const stamina = document.createElement('div');
+                    stamina.textContent = item.stamina;
+                    hidden.appendChild(stamina);
+                    const landscape = document.createElement('div');
+                    landscape.textContent = item.landscape;
+                    hidden.appendChild(landscape);
+                    const techn = document.createElement('div');
+                    techn.textContent = item.technique;
+                    hidden.appendChild(techn);
+                    hidden.style.display = 'none';
+                    container.appendChild(hidden);
                     list.appendChild(container);
                 }
 
@@ -142,7 +160,6 @@ function filterData() {
     // Loop through the elements and show/hide based on the search query
     var list = document.getElementById('dHike');
     var hikes = list.getElementsByClassName('hikeContainer');
-    console.log(hikes.length);
 
 
     for (var i = 0; i < hikes.length; i++) {
@@ -165,9 +182,180 @@ document.addEventListener("keydown", function (event) {
     if (event.key === "Enter")
         filterData();
 
-})
+});
+
 const urlParams = new URLSearchParams(window.location.search);
 const paramValue = urlParams.get('param');
-
 fetchShortList(paramValue);
+
+
+window.onscroll = function() {
+    var fixedElement = document.querySelector('.fix');
+    const fixedBack = document.querySelector('.fixBack');
+    const fixedNav = document.querySelector('.nav');
+
+    // Distance from the top of the document to the top of the fixed element
+    var distanceToTop = fixedElement.offsetTop;
+
+    // Check if the user has scrolled past the top of the fixed element
+    if (window.scrollY > distanceToTop) {
+        fixedElement.classList.add('fixed');
+        fixedBack.classList.add('fixedBack');
+        fixedNav.classList.add('fixedNav');
+    } else {
+        fixedElement.classList.remove('fixed');
+        fixedBack.classList.remove('fixedBack');
+        fixedNav.classList.remove('fixedNav');
+    }
+};
+function toggleFilter() {
+    var x = document.getElementById("filter");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+
+
+
+const hour = " hours";
+sliderOutPutWithValue(document.querySelector("#minValue"), document.querySelector(".min"), hour);
+sliderOutPutWithValue(document.querySelector("#maxValue"), document.querySelector(".max"), hour);
+const km = " km";
+sliderOutPutWithValue(document.querySelector("#minDistance"), document.querySelector(".minDistance"), km);
+sliderOutPutWithValue(document.querySelector("#maxDistance"), document.querySelector(".maxDistance"), km);
+const m = " m";
+sliderOutPutWithValue(document.querySelector("#minAltitude"), document.querySelector(".minAltitude"), m);
+sliderOutPutWithValue(document.querySelector("#maxAltitude"), document.querySelector(".maxAltitude"), m);
+
+sliderOutPut(document.querySelector("#minStrength"), document.querySelector(".minStrength"));
+sliderOutPut(document.querySelector("#maxStrength"), document.querySelector(".maxStrength"));
+sliderOutPut(document.querySelector("#minStamina"), document.querySelector(".minStamina"));
+sliderOutPut(document.querySelector("#maxStamina"), document.querySelector(".maxStamina"));
+sliderOutPut(document.querySelector("#minDifficulty"), document.querySelector(".minDifficulty"));
+sliderOutPut(document.querySelector("#maxDifficulty"), document.querySelector(".maxDifficulty"));
+sliderOutPut(document.querySelector("#minLandscape"), document.querySelector(".minLandscape"));
+sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".maxLandscape"));
+
+
+function sliderOutPutWithValue(outputId, inputClass, messaurment) {
+    const value = outputId;
+    const input = inputClass;
+    value.textContent = input.value;
+    input.addEventListener("change", (event) => {
+        value.textContent = event.target.value + messaurment;
+    });
+}
+function sliderOutPut(outputId, inputClass) {
+    const value = outputId;
+    const input = inputClass;
+    value.textContent = input.value;
+    input.addEventListener("change", (event) => {
+        value.textContent = event.target.value;
+    });
+}
+
+
+function filter() {
+    var list = document.getElementById('dHike');
+    var hikes = list.getElementsByClassName('hikeContainer');
+    var region = document.getElementById("region").value.toLowerCase();
+    var location = document.getElementById("location").value.toLowerCase();
+    var minD = document.querySelector(".minDistance").value;
+    var maxD = document.querySelector(".maxDistance").value;
+    var minDuration = Math.floor(document.querySelector(".min").value);
+    var maxDuration = Math.floor(document.querySelector(".max").value);
+    var months = document.querySelectorAll('input[name="month"]:checked');
+    var minAltitude = document.querySelector(".minAltitude").value;
+    var maxAltitude = document.querySelector(".maxAltitude").value;
+    var minStrength = document.querySelector(".minStrength").value;
+    var maxStrength = document.querySelector(".maxStrength").value;
+    var minStamina = document.querySelector(".minStamina").value;
+    var maxStamina = document.querySelector(".maxStamina").value;
+    var minLandscape = document.querySelector(".minLandscape").value;
+    var maxLandscape = document.querySelector(".maxLandscape").value;
+    var minTechnique = document.querySelector(".minDifficulty").value;
+    var maxTechnique = document.querySelector(".maxDifficulty").value;
+
+
+
+
+    for (let i = 0; i < hikes.length; i++) {
+        var hike = hikes[i];
+        var regi = hike.getElementsByTagName('div')[2].textContent.toLowerCase();
+        var loc = hike.getElementsByTagName('div')[3].textContent.toLowerCase();
+        var leng = hike.getElementsByTagName('div')[5].textContent;
+        var l = leng.split(' ');
+        var km = l[0];
+        var duration = hike.getElementsByTagName('div')[10].textContent;
+        var time = duration.split(':');
+        var nums = time[0].split('');
+        var hour;
+        if (!nums[0]===0){
+            hour = nums[0]+nums[1];
+        } else {
+            hour = nums[1];
+        }
+        var listMonths = hike.getElementsByTagName('li');
+        let monthCheck = false;
+        var altitude = hike.getElementsByTagName('div')[14].textContent;
+        var strength = hike.getElementsByTagName('div')[15].textContent;
+        var stamina = hike.getElementsByTagName('div')[16].textContent;
+        var landscape = hike.getElementsByTagName('div')[17].textContent;
+        var technique = hike.getElementsByTagName('div')[18].textContent;
+
+
+
+        if (!regi.includes(region)) {
+
+            hike.style.display = 'none';
+        }
+        if (!loc.includes(location)) {
+
+            hike.style.display = 'none';
+        }
+        if (!(minD <= km && km <= maxD)) {
+
+            hike.style.display = 'none';
+        }
+        if (!(minDuration <= hour && hour <= maxDuration)) {
+
+            hike.style.display = 'none';
+        }
+
+        for (let i = 0; i < listMonths.length; i++){
+            const month = listMonths[i].textContent.toLowerCase();
+            months.forEach((checkbox) => {
+                const chMonth = checkbox.value.toLowerCase();
+                if (chMonth.includes(month) || month.includes(chMonth))
+                    monthCheck = true;
+            });
+
+        }
+
+        if (!monthCheck) {
+            hike.style.display = 'none';
+        }
+
+        if (!(minAltitude <= altitude && altitude <= maxAltitude)) {
+            hike.style.display = 'none';
+        }
+
+        if (!(minStrength <= strength && strength <= maxStrength)) {
+            hike.style.display = 'none';
+        }
+        if (!(minStamina <= stamina && stamina <= maxStamina)) {
+            hike.style.display = 'none';
+        }
+        if (!(minLandscape <= landscape && landscape <= maxLandscape)) {
+            hike.style.display = 'none';
+        }
+        if (!(minTechnique <= technique && technique <= maxTechnique)) {
+            hike.style.display = 'none';
+        }
+
+    }
+}
 

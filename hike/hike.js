@@ -244,16 +244,21 @@ function fetchHike() {
 
                     const map = L.map('map').setView([start[0], start[1]], 15);
                     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                        maxZoom: 19,
+                        maxZoom: 19
                     }).addTo(map);
+
+                    var markerOptions = {
+                        clickable: false,
+                        draggable: false
+                    }
 
                     const mStart = new L.Marker([start[0], start[1]]).addTo(map);
                     const first = item.stop_one.split(', ');
-                    const mFirst = new L.Marker([first[0], first[1]]).addTo(map);
+                    const mFirst = new L.Marker([first[0], first[1]], markerOptions).addTo(map);
                     const second = item.stop_two.split(', ');
-                    const mSecond = new L.Marker([second[0], second[1]]).addTo(map);
+                    const mSecond = new L.Marker([second[0], second[1]], markerOptions).addTo(map);
                     const three = item.stop_three.split(', ');
-                    const mThree = new L.Marker([three[0], three[1]]).addTo(map);
+                    const mThree = new L.Marker([three[0], three[1]], markerOptions).addTo(map);
                     const end = item.finishing_point.split(', ');
                     const mEnd = new L.Marker([end[0], end[1]]).addTo(map);
 
@@ -264,8 +269,10 @@ function fetchHike() {
                         [three[0], three[1]],
                         [end[0], end[1]]
                     ];
+
                     const route = L.Routing.control({
-                        waypoints: polyCoordinates
+                        waypoints: polyCoordinates,
+                        routeWhileDragging: false
                     }).addTo(map);
 
                     const polyline = L.polyline(polyCoordinates);

@@ -1,3 +1,4 @@
+
 function fetchImageNameList() {
     fetch('http://localhost:30000/image-name-list-db')
         .then(response => {
@@ -70,3 +71,5 @@ function getQueryParam(parameter) {
     var urlParams = new URLSearchParams(queryString);
     return urlParams.get(parameter);
 }
+
+

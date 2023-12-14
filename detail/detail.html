@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="detail.css">
-    <script type="text/javascript" src="../main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
@@ -13,7 +12,6 @@
 <div id="navBar" class="nav">
     <div>
         <img src="../image/icons8-mountain-100.png" alt="Let's Hike logo" height="96%">
-        <a href="../create.html">Create Hike</a>
     </div>
     <div>
         <img src="../image/icons8-login-67.png" alt="login" height="70%">
@@ -23,7 +21,8 @@
 
 <!-- Add an input field for the search query -->
 <div class="fixBack">
-<label for="searchInput"></label><input type="text" id="searchInput" class="fix" placeholder="Search by name, place or region">
+    <label for="searchInput"></label>
+<input type="text" id="searchInput" class="fix" placeholder="Search by name, place or region">
 </div>
 
 <!-- Display the filtered results in this container -->
@@ -32,7 +31,6 @@
 <div id="dHike"></div>
 <div id="filter">
     <table>
-        <form action="filter()">
             <tr>
                 <td>
                     <label for="region">
@@ -56,10 +54,10 @@
                 </label>
                 </td>
                 <td><div id="duration">
-                    <input class="min" name="range_1" type="range" min="0" max="24" value="0" step="0.10"/>
-                    <input class="max" name="range_1" type="range" min="0" max="24" value="1" step="0.10"/>
-                    <output id="minValue">hours</output>
-                    <output id="maxValue">hours</output>
+                    <input class="min" type="range" min="0" max="24" value="0" step="0.10"/>
+                    <input class="max" type="range" min="0" max="24" value="1" step="0.10"/>
+                    <label id="minValue"></label>
+                    <label id="maxValue"></label>
                 </div>
                 </td>
             </tr>
@@ -69,10 +67,10 @@
                 </label>
                 </td>
                 <td><div id="distance">
-                    <input class="minDistance" name="range_1" type="range" min="0" max="100" value="0" step="0.10"/>
-                    <input class="maxDistance" name="range_1" type="range" min="0" max="100" value="5" step="0.10"/>
-                    <output id="minDistance">km</output>
-                    <output id="maxDistance">km</output>
+                    <input class="minDistance" type="range" min="0" max="100" value="0" step="0.10"/>
+                    <input class="maxDistance" type="range" min="0" max="100" value="5" step="0.10"/>
+                    <label id="minDistance">km</label>
+                    <label id="maxDistance">km</label>
                 </div>
                 </td>
             </tr>
@@ -82,10 +80,10 @@
                 </label>
                 </td>
                 <td><div id="altitude">
-                    <input class="minAltitude" name="range_1" type="range" min="0" max="10000" value="0" step="1"/>
-                    <input class="maxAltitude" name="range_1" type="range" min="0" max="10000" value="500" step="1"/>
-                    <output id="minAltitude"></output>
-                    <output id="maxAltitude"></output>
+                    <input class="minAltitude" type="range" min="0" max="10000" value="0" step="1"/>
+                    <input class="maxAltitude" type="range" min="0" max="10000" value="500" step="1"/>
+                    <label id="minAltitude"></label>
+                    <label id="maxAltitude"></label>
                 </div>
                 </td>
             </tr>
@@ -95,10 +93,10 @@
                 </label>
                 </td>
                 <td><div id="strength">
-                    <input class="minStrength" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxStrength" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
-                    <output id="minStrength"></output>
-                    <output id="maxStrength"></output>
+                    <input class="minStrength" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxStrength" type="range" min="0" max="5" value="1" step="1"/>
+                    <label id="minStrength"></label>
+                    <label id="maxStrength"></label>
                 </div>
                 </td>
             </tr>
@@ -108,23 +106,23 @@
                 </label>
                 </td>
                 <td><div id="stamina">
-                    <input class="minStamina" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxStamina" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
-                    <output id="minStamina"></output>
-                    <output id="maxStamina"></output>
+                    <input class="minStamina" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxStamina" type="range" min="0" max="5" value="1" step="1"/>
+                    <label id="minStamina"></label>
+                    <label id="maxStamina"></label>
                 </div>
                 </td>
             </tr>
             <tr>
                 <td><label for="difficulty">
-                    Difficulty
+                    Technique
                 </label>
                 </td>
                 <td><div id="difficulty">
-                    <input class="minDifficulty" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxDifficulty" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
-                    <output id="minDifficulty"></output>
-                    <output id="maxDifficulty"></output>
+                    <input class="minDifficulty" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxDifficulty" type="range" min="0" max="5" value="1" step="1"/>
+                    <label id="minDifficulty"></label>
+                    <label id="maxDifficulty"></label>
                 </div>
                 </td>
             </tr>
@@ -134,10 +132,10 @@
                 </label>
                 </td>
                 <td><div id="landscape">
-                    <input class="minLandscape" name="range_1" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxLandscape" name="range_1" type="range" min="0" max="5" value="1" step="1"/>
-                    <output id="minLandscape"></output>
-                    <output id="maxLandscape"></output>
+                    <input class="minLandscape" type="range" min="0" max="5" value="0" step="1"/>
+                    <input class="maxLandscape" type="range" min="0" max="5" value="1" step="1"/>
+                    <label id="minLandscape"></label>
+                    <label id="maxLandscape"></label>
                 </div>
                 </td>
             </tr>
@@ -146,113 +144,39 @@
             <label>Choose month</label>
             </td>
                 <td>
-                <input type="checkbox" id="january" name="january" value="january">
+                <input type="checkbox" id="january" name="month" value="january">
                 <label for="january"> January</label><br>
-                <input type="checkbox" id="february" name="february" value="february">
+                <input type="checkbox" id="february" name="month" value="february">
                 <label for="february">February</label><br>
-                <input type="checkbox" id="march" name="march" value="march">
+                <input type="checkbox" id="march" name="month" value="march">
                 <label for="march">March</label><br>
-                    <input type="checkbox" id="april" name="april" value="april">
+                    <input type="checkbox" id="april" name="month" value="april">
                     <label for="april">April</label><br>
-                    <input type="checkbox" id="may" name="may" value="may">
+                    <input type="checkbox" id="may" name="month" value="may">
                     <label for="may">May</label><br>
-                    <input type="checkbox" id="june" name="june" value="june">
+                    <input type="checkbox" id="june" name="month" value="june">
                     <label for="june">June</label><br>
-                    <input type="checkbox" id="july" name="july" value="july">
+                    <input type="checkbox" id="july" name="month" value="july">
                     <label for="july">July</label><br>
-                    <input type="checkbox" id="august" name="august" value="august">
+                    <input type="checkbox" id="august" name="month" value="august">
                     <label for="august">August</label><br>
-                    <input type="checkbox" id="september" name="september" value="september">
+                    <input type="checkbox" id="september" name="month" value="september">
                     <label for="september">September</label><br>
-                    <input type="checkbox" id="october" name="october" value="october">
+                    <input type="checkbox" id="october" name="month" value="october">
                     <label for="october">October</label><br>
-                    <input type="checkbox" id="november" name="november" value="november">
+                    <input type="checkbox" id="november" name="month" value="november">
                     <label for="november">November</label><br>
-                    <input type="checkbox" id="december" name="december" value="december">
+                    <input type="checkbox" id="december" name="month" value="december">
                     <label for="december">December</label><br>
 
                 </td>
             </tr>
 
-            <input type="submit" value="Send" />
-        </form>
+            <button type="submit" onclick="filter()" style="height: 40px">Filter</button>
     </table>
 </div>
-<script>
 
-    window.onscroll = function() {
-        var fixedElement = document.querySelector('.fix');
-        const fixedBack = document.querySelector('.fixBack');
-        const fixedNav = document.querySelector('.nav');
-
-        // Distance from the top of the document to the top of the fixed element
-        var distanceToTop = fixedElement.offsetTop;
-
-        // Check if the user has scrolled past the top of the fixed element
-        if (window.scrollY > distanceToTop) {
-            fixedElement.classList.add('fixed');
-            fixedBack.classList.add('fixedBack');
-            fixedNav.classList.add('fixedNav');
-        } else {
-            fixedElement.classList.remove('fixed');
-            fixedBack.classList.remove('fixedBack');
-            fixedNav.classList.remove('fixedNav');
-        }
-    };
-   function toggleFilter() {
-       var x = document.getElementById("filter");
-       if (x.style.display === "none") {
-           x.style.display = "block";
-       } else {
-           x.style.display = "none";
-       }
-   }
-
-   function filter() {
-
-   }
-
-
-   const hour = " hours";
-   sliderOutPutWithValue(document.querySelector("#minValue"), document.querySelector(".min"), hour);
-   sliderOutPutWithValue(document.querySelector("#maxValue"), document.querySelector(".max"), hour);
-   const km = " km";
-   sliderOutPutWithValue(document.querySelector("#minDistance"), document.querySelector(".minDistance"), km);
-   sliderOutPutWithValue(document.querySelector("#maxDistance"), document.querySelector(".maxDistance"), km);
-   const m = " m";
-   sliderOutPutWithValue(document.querySelector("#minAltitude"), document.querySelector(".minAltitude"), m);
-   sliderOutPutWithValue(document.querySelector("#maxAltitude"), document.querySelector(".maxAltitude"), m);
-
-   sliderOutPut(document.querySelector("#minStrength"), document.querySelector(".minStrength"));
-   sliderOutPut(document.querySelector("#maxStrength"), document.querySelector(".maxStrength"));
-   sliderOutPut(document.querySelector("#minStamina"), document.querySelector(".minStamina"));
-   sliderOutPut(document.querySelector("#maxStamina"), document.querySelector(".maxStamina"));
-   sliderOutPut(document.querySelector("#minDifficulty"), document.querySelector(".minDifficulty"));
-   sliderOutPut(document.querySelector("#maxDifficulty"), document.querySelector(".maxDifficulty"));
-   sliderOutPut(document.querySelector("#minLandscape"), document.querySelector(".minLandscape"));
-   sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".maxLandscape"));
-
-
-   function sliderOutPutWithValue(outputId, inputClass, messaurment) {
-       const value = outputId;
-       const input = inputClass;
-       value.textContent = input.value;
-       input.addEventListener("input", (event) => {
-           value.textContent = event.target.value + messaurment;
-       });
-   }
-   function sliderOutPut(outputId, inputClass) {
-       const value = outputId;
-       const input = inputClass;
-       value.textContent = input.value;
-       input.addEventListener("input", (event) => {
-           value.textContent = event.target.value;
-       });
-   }
-
-
-</script>
-
+<script type="text/javascript" src="../main.js"></script>
 <script type="text/javascript" src="detail.js"></script>
 
 </body>
