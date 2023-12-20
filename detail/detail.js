@@ -221,15 +221,15 @@ function toggleFilter() {
 
 
 const hour = " hours";
-sliderOutPutWithValue(document.querySelector("#minValue"), document.querySelector(".min"), hour);
-sliderOutPutWithValue(document.querySelector("#maxValue"), document.querySelector(".max"), hour);
+//sliderOutPutWithValue(document.querySelector("#minValue"), document.querySelector(".min"), hour);
+//sliderOutPutWithValue(document.querySelector("#maxValue"), document.querySelector(".max"), hour);
 const km = " km";
-sliderOutPutWithValue(document.querySelector("#minDistance"), document.querySelector(".minDistance"), km);
-sliderOutPutWithValue(document.querySelector("#maxDistance"), document.querySelector(".maxDistance"), km);
+//sliderOutPutWithValue(document.querySelector("#minDistance"), document.querySelector(".minDistance"), km);
+//sliderOutPutWithValue(document.querySelector("#maxDistance"), document.querySelector(".maxDistance"), km);
 const m = " m";
-sliderOutPutWithValue(document.querySelector("#minAltitude"), document.querySelector(".minAltitude"), m);
-sliderOutPutWithValue(document.querySelector("#maxAltitude"), document.querySelector(".maxAltitude"), m);
-
+//sliderOutPutWithValue(document.querySelector("#minAltitude"), document.querySelector(".minAltitude"), m);
+//sliderOutPutWithValue(document.querySelector("#maxAltitude"), document.querySelector(".maxAltitude"), m);
+/*
 sliderOutPut(document.querySelector("#minStrength"), document.querySelector(".minStrength"));
 sliderOutPut(document.querySelector("#maxStrength"), document.querySelector(".maxStrength"));
 sliderOutPut(document.querySelector("#minStamina"), document.querySelector(".minStamina"));
@@ -238,15 +238,213 @@ sliderOutPut(document.querySelector("#minDifficulty"), document.querySelector(".
 sliderOutPut(document.querySelector("#maxDifficulty"), document.querySelector(".maxDifficulty"));
 sliderOutPut(document.querySelector("#minLandscape"), document.querySelector(".minLandscape"));
 sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".maxLandscape"));
+ */
 
+(function() {
+
+    function addSeparator(nStr) {
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + '.' + '$2');
+        }
+        return x1 + x2;
+    }
+
+    function rangeInputChangeEventHandlerDuration(e){
+        var rangeGroup = $(this).attr('duration'),
+            minBtn = $(this).parent().children('.min'),
+            maxBtn = $(this).parent().children('.max'),
+            range_min = $(this).parent().children('#minValue'),
+            range_max = $(this).parent().children('#maxValue'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'min' && minVal > maxVal-1){
+            $(minBtn).val(maxVal-1);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*0.5)+ ' hours');
+
+
+        if(origin === 'max' && maxVal-1 < minVal){
+            $(maxBtn).val(1+ minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*0.5) + ' hours');
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerDuration);
+
+    function rangeInputChangeEventHandlerDistance(e){
+        var rangeGroup = $(this).attr('distance'),
+            minBtn = $(this).parent().children('.minDistance'),
+            maxBtn = $(this).parent().children('.maxDistance'),
+            range_min = $(this).parent().children('#minDistance'),
+            range_max = $(this).parent().children('#maxDistance'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'minDistance' && minVal > maxVal-1){
+            $(minBtn).val(maxVal-1);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*1)+ ' km');
+
+
+        if(origin === 'maxDistance' && maxVal-1 < minVal){
+            $(maxBtn).val(2+ minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*1) + ' km');
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerDistance);
+
+    function rangeInputChangeEventHandlerAltitude(e){
+        var rangeGroup = $(this).attr('altitude'),
+            minBtn = $(this).parent().children('.minAltitude'),
+            maxBtn = $(this).parent().children('.maxAltitude'),
+            range_min = $(this).parent().children('#minAltitude'),
+            range_max = $(this).parent().children('#maxAltitude'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'minAltitude' && minVal > maxVal-50){
+            $(minBtn).val(maxVal-50);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*1)+ ' m');
+
+
+        if(origin === 'maxAltitude' && maxVal-50 < minVal){
+            $(maxBtn).val(50+ minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*1) + ' m');
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerAltitude);
+
+    function rangeInputChangeEventHandlerStrength(e){
+        var rangeGroup = $(this).attr('strength'),
+            minBtn = $(this).parent().children('.minStrength'),
+            maxBtn = $(this).parent().children('.maxStrength'),
+            range_min = $(this).parent().children('#minStrength'),
+            range_max = $(this).parent().children('#maxStrength'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'minStrength' && minVal > maxVal-1){
+            $(minBtn).val(maxVal);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*1));
+
+
+        if(origin === 'maxStrength' && maxVal-1 < minVal){
+            $(maxBtn).val(minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*1));
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerStrength);
+
+    function rangeInputChangeEventHandlerStamina(e){
+        var rangeGroup = $(this).attr('stamina'),
+            minBtn = $(this).parent().children('.minStamina'),
+            maxBtn = $(this).parent().children('.maxStamina'),
+            range_min = $(this).parent().children('#minStamina'),
+            range_max = $(this).parent().children('#maxStamina'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'minStamina' && minVal > maxVal-1){
+            $(minBtn).val(maxVal);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*1));
+
+
+        if(origin === 'maxStamina' && maxVal-1 < minVal){
+            $(maxBtn).val(minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*1));
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerStamina);
+
+    function rangeInputChangeEventHandlerDifficulty(e){
+        var rangeGroup = $(this).attr('difficulty'),
+            minBtn = $(this).parent().children('.minDifficulty'),
+            maxBtn = $(this).parent().children('.maxDifficulty'),
+            range_min = $(this).parent().children('#minDifficulty'),
+            range_max = $(this).parent().children('#maxDifficulty'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'minDifficulty' && minVal > maxVal-1){
+            $(minBtn).val(maxVal);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*1));
+
+
+        if(origin === 'maxDifficulty' && maxVal-1 < minVal){
+            $(maxBtn).val(minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*1));
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerDifficulty);
+
+    function rangeInputChangeEventHandlerLandscape(e){
+        var rangeGroup = $(this).attr('landscape'),
+            minBtn = $(this).parent().children('.minLandscape'),
+            maxBtn = $(this).parent().children('.maxLandscape'),
+            range_min = $(this).parent().children('#minLandscape'),
+            range_max = $(this).parent().children('#maxLandscape'),
+            minVal = parseInt($(minBtn).val()),
+            maxVal = parseInt($(maxBtn).val()),
+            origin = $(this).context.className;
+
+        if(origin === 'minLandscape' && minVal > maxVal-1){
+            $(minBtn).val(maxVal);
+        }
+        var minVal = parseInt($(minBtn).val());
+        $(range_min).html(addSeparator(minVal*1));
+
+
+        if(origin === 'maxLandscape' && maxVal-1 < minVal){
+            $(maxBtn).val(minVal);
+        }
+        var maxVal = parseInt($(maxBtn).val());
+        $(range_max).html(addSeparator(maxVal*1));
+    }
+
+    $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerLandscape);
+
+})();
 
 function sliderOutPutWithValue(outputId, inputClass, messaurment) {
     const value = outputId;
     const input = inputClass;
     value.textContent = input.value;
-    input.addEventListener("change", (event) => {
-        value.textContent = event.target.value + messaurment;
-    });
+   // input.addEventListener("change", (event) => {
+    //    value.textContent = event.target.value + messaurment;
+   // });
 }
 function sliderOutPut(outputId, inputClass) {
     const value = outputId;
