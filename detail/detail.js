@@ -188,28 +188,46 @@ const urlParams = new URLSearchParams(window.location.search);
 const paramValue = urlParams.get('param');
 fetchShortList(paramValue);
 
+var lastScroll = 0;
 
 window.onscroll = function() {
     var fixedElement = document.querySelector('.fix');
     const fixedBack = document.querySelector('.fixBack');
     const fixedNav = document.querySelector('.nav');
+    const fixedFilter= document.querySelector('.filter');
+
 
     // Distance from the top of the document to the top of the fixed element
     var distanceToTop = fixedElement.offsetTop;
 
+    let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
+    console.log(currentScroll +'current ' + lastScroll + 'last');
+
     // Check if the user has scrolled past the top of the fixed element
     if (window.scrollY > distanceToTop) {
-        fixedElement.classList.add('fixed');
-        fixedBack.classList.add('fixedBack');
-        fixedNav.classList.add('fixedNav');
+        if (currentScroll > 0 && lastScroll >= currentScroll) {
+            lastScroll = currentScroll;
+            fixedElement.classList.add('fixed');
+            fixedBack.classList.add('fixedBack');
+            fixedNav.classList.add('fixedNav');
+            fixedFilter.classList.add('filterFix');
+        } else {
+            lastScroll = currentScroll;
+            fixedElement.classList.remove('fixed');
+            fixedBack.classList.remove('fixedBack');
+            fixedNav.classList.remove('fixedNav');
+            fixedFilter.classList.remove('filterFix');
+        }
     } else {
+        lastScroll = currentScroll;
         fixedElement.classList.remove('fixed');
         fixedBack.classList.remove('fixedBack');
         fixedNav.classList.remove('fixedNav');
+        fixedFilter.classList.remove('filterFix');
     }
 };
 function toggleFilter() {
-    var x = document.getElementById("filter");
+    var x = document.querySelector(".filter");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
@@ -438,6 +456,7 @@ sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".m
 
 })();
 
+/*
 function sliderOutPutWithValue(outputId, inputClass, messaurment) {
     const value = outputId;
     const input = inputClass;
@@ -454,6 +473,8 @@ function sliderOutPut(outputId, inputClass) {
         value.textContent = event.target.value;
     });
 }
+
+ */
 
 
 function filter() {

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
+
 body {
     background-image: url("../image/quairaing-540122_1280.jpg");
     background-attachment: fixed;
@@ -7,8 +8,6 @@ body {
     grid-template-columns: 1.25fr 0.75fr;
     grid-template-rows: 1fr 1fr 1fr;
     margin: 0;
-
-
 }
 
 .nav {
@@ -61,10 +60,10 @@ body {
     flex-direction: column;
 }
 
-
 .hikeContainer > a > img{
     height: 150px;
 }
+
 .hikeContainer > a > div {
     font-family: "Carter One";
     font-size: 20px;
@@ -161,12 +160,16 @@ body {
     text-decoration-line:none;
 }
 
-#filter {
+.filter {
     background-color: white;
     border-radius: 10px;
     grid-column-start: 2;
-
     margin-top: 100px;
+}
+.filterFix{
+    position: fixed;
+    margin-left: 900px;
+    width: 400px;
 }
 .location {
     display: inline-flex;
@@ -337,6 +340,10 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
 #altitude input{
     position: absolute;
     align-self: center;
+}
+
+.hidden {
+    display: none;
 }
 
 
