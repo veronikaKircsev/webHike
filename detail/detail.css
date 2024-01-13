@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bangers&family=Carter+One&family=Caveat&family=Libre+Baskerville:ital@1&display=swap');
 
 body {
-    background-image: url("../image/quairaing-540122_1280.jpg");
+    background-image: url("../image/quairaing-540122_1920.jpg");
     background-attachment: fixed;
     display: grid;
     grid-template-columns: 1.25fr 0.75fr;
@@ -11,11 +11,11 @@ body {
 }
 
 .nav {
-    margin-top: 10px;
+    margin-top: 0;
     position: fixed;
     display: flex;
     justify-content: space-between;
-    height: 2.5rem;
+    height: 60px;
     width: 100%;
     gap: 3rem;
     grid-row-start: 1;
@@ -23,15 +23,13 @@ body {
 }
 
 .fixedNav {
-    background-color: #6C5F5B;
-    position: fixed;
-    margin-top: 0;
-    display: flex;
-    justify-content: space-between;
-    height: 3rem;
-    gap: 0rem;
-    grid-row-start: 1;
-    z-index: 5;
+    background-color: #B2A59B;
+
+}
+
+
+.hiddenNav{
+    display: none;
 }
 
 #navBar > div {
@@ -51,7 +49,8 @@ body {
 .nav > div > img {
     align-self: center;
     border-radius: 5px;
-    margin: 10px;
+    margin-top: 20px;
+    margin-left: 10px;
 }
 
 
@@ -60,8 +59,18 @@ body {
     flex-direction: column;
 }
 
-.hikeContainer > a > img{
+.hikeContainer:hover > a > img {
+        box-shadow: 2px 2px 6px #776B5D, 4px 4px 12px #B0A695, 6px 6px 24px #EBE3D5;
+}
+
+.hikeContainer > a > img {
     height: 150px;
+    width: 250px;
+
+}
+
+.hikeContainer:hover > a > div {
+    text-shadow: 2px 2px 6px #776B5D, 4px 4px 12px #B0A695, 6px 6px 24px #EBE3D5;
 }
 
 .hikeContainer > a > div {
@@ -76,13 +85,14 @@ body {
     background-color: white;
     position: relative;
     margin-top: 50px;
-    margin-left: 50px;
+    margin-left: 100px;
     border-radius: 10px;
     padding: 20px;
-    width: 100%;
+    width: 90%;
     display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
     grid-template-rows: 1fr;
+    gap: 20px;
 }
 .hikeTag{
     grid-area: 1/1/1/1;
@@ -123,10 +133,10 @@ body {
 .fix{
     position: absolute;
     border-radius: 10px;
-    width: 40%;
+    width: 47%;
     height: 30px;
     margin-top: 100px;
-    margin-left: 50px;
+    margin-left: 100px;
     border-color: white;
     border-style: none;
     padding: 5px 5px 5px 10px;
@@ -136,25 +146,14 @@ body {
     position: fixed;
     border-radius: 10px;
     width: 40%;
-    height: 25px;
-    margin-top: 0;
-    margin-left: 50px;
+    height: 30px;
+    margin-left: 100px;
+    margin-top: 10px;
     border-color: white;
     border-style: none;
     padding: 5px 5px 5px 10px;
     z-index: 10;
 }
-
-.fixedBack{
-    width: 100%;
-    position: fixed;
-    background-color: #6C5F5B;
-    height: 50px;
-    margin-top: 40px;
-    z-index: 5;
-
-}
-
 
 .dHikeName {
     text-decoration-line:none;
@@ -162,15 +161,36 @@ body {
 
 .filter {
     background-color: white;
+    font-family: "Archivo Black";
+    font-size: 16px;
     border-radius: 10px;
     grid-column-start: 2;
     margin-top: 100px;
-}
-.filterFix{
-    position: fixed;
-    margin-left: 900px;
     width: 400px;
 }
+.filter > table {
+    margin: 20px;
+}
+.filterButton {
+    background-color: #739072;
+    height: 30px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#region {
+    background-color: #D8D9DA;
+    border-radius: 5px;
+    border-style: none;
+    height: 20px;
+}
+#location {
+    background-color: #D8D9DA;
+    border-radius: 5px;
+    border-style: none;
+    height: 20px;
+}
+
 .location {
     display: inline-flex;
     gap: 5px;
@@ -197,11 +217,18 @@ body {
 }
 
 #toggleFilter{
-    background-image: url("../image/icons8-search-more-48.png");
-    height: 45px;
-    width: 45px;
+    background-image: url("../image/icons8-menu-48-transformed.png");
+    background-color: transparent;
+    background-size: 38px;
+    height: 38px;
+    width: 38px;
+    align-self: center;
     border-radius: 5px;
-    margin-right: 50px;
+    border: none;
+    margin-top: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+
 }
 
 
@@ -220,8 +247,8 @@ input[type='range']::-webkit-slider-thumb {
 }
 input[type='range']::-webkit-slider-runnable-track {
     width: 200px;
-    height: 1px;
-    background: #003D7C;
+    height: 2px;
+    background: #1B1A17;
 }
 
 input[type='range']:nth-child(2)::-webkit-slider-runnable-track{
@@ -233,8 +260,8 @@ input[type='range']::-webkit-slider-thumb {
     height: 15px;
     width: 15px;
     margin-top: -7px;
-    background: #fff;
-    border: 1px solid #003D7C;
+    background: #272829;
+    border: 2px solid #272829;
     border-radius: 25px;
     z-index: 1;
 }
@@ -248,6 +275,7 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     position: relative;
     height: 45px;
     width: 210px;
+    font-size: 11px;
     display: inline-flex;
     justify-content: space-between;
 
@@ -264,7 +292,7 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     width: 210px;
     display: inline-flex;
     justify-content: space-between;
-
+    font-size: 11px;
 
 }
 #distance input{
@@ -278,7 +306,7 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     width: 210px;
     display: inline-flex;
     justify-content: space-between;
-
+    font-size: 11px;
 
 }
 #strength input{
@@ -292,7 +320,7 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     width: 210px;
     display: inline-flex;
     justify-content: space-between;
-
+    font-size: 11px;
 
 }
 #stamina input{
@@ -306,7 +334,7 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     width: 210px;
     display: inline-flex;
     justify-content: space-between;
-
+    font-size: 11px;
 
 }
 #difficulty input{
@@ -320,7 +348,7 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     width: 210px;
     display: inline-flex;
     justify-content: space-between;
-
+    font-size: 11px;
 
 }
 #landscape input{
@@ -334,16 +362,12 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     width: 210px;
     display: inline-flex;
     justify-content: space-between;
-
+    font-size: 11px;
 
 }
 #altitude input{
     position: absolute;
     align-self: center;
-}
-
-.hidden {
-    display: none;
 }
 
 

@@ -153,6 +153,8 @@ function fetchShortList(filter) {
         .catch(error => console.error('Fetch error:', error));
 }
 
+
+
 function filterData() {
     // Get the search query from the input field
     var searchQuery = document.getElementById('searchInput').value.toLowerCase();
@@ -186,15 +188,22 @@ document.addEventListener("keydown", function (event) {
 
 const urlParams = new URLSearchParams(window.location.search);
 const paramValue = urlParams.get('param');
-fetchShortList(paramValue);
+
+window.onload = function() {
+if (paramValue === null) {
+    fetchShortList('');
+
+} else {
+    fetchShortList(paramValue);
+}
+}
 
 var lastScroll = 0;
 
 window.onscroll = function() {
     var fixedElement = document.querySelector('.fix');
-    const fixedBack = document.querySelector('.fixBack');
     const fixedNav = document.querySelector('.nav');
-    const fixedFilter= document.querySelector('.filter');
+
 
 
     // Distance from the top of the document to the top of the fixed element
@@ -208,22 +217,16 @@ window.onscroll = function() {
         if (currentScroll > 0 && lastScroll >= currentScroll) {
             lastScroll = currentScroll;
             fixedElement.classList.add('fixed');
-            fixedBack.classList.add('fixedBack');
             fixedNav.classList.add('fixedNav');
-            fixedFilter.classList.add('filterFix');
         } else {
             lastScroll = currentScroll;
             fixedElement.classList.remove('fixed');
-            fixedBack.classList.remove('fixedBack');
             fixedNav.classList.remove('fixedNav');
-            fixedFilter.classList.remove('filterFix');
         }
     } else {
         lastScroll = currentScroll;
         fixedElement.classList.remove('fixed');
-        fixedBack.classList.remove('fixedBack');
         fixedNav.classList.remove('fixedNav');
-        fixedFilter.classList.remove('filterFix');
     }
 };
 function toggleFilter() {
@@ -236,27 +239,6 @@ function toggleFilter() {
 }
 
 
-
-
-const hour = " hours";
-//sliderOutPutWithValue(document.querySelector("#minValue"), document.querySelector(".min"), hour);
-//sliderOutPutWithValue(document.querySelector("#maxValue"), document.querySelector(".max"), hour);
-const km = " km";
-//sliderOutPutWithValue(document.querySelector("#minDistance"), document.querySelector(".minDistance"), km);
-//sliderOutPutWithValue(document.querySelector("#maxDistance"), document.querySelector(".maxDistance"), km);
-const m = " m";
-//sliderOutPutWithValue(document.querySelector("#minAltitude"), document.querySelector(".minAltitude"), m);
-//sliderOutPutWithValue(document.querySelector("#maxAltitude"), document.querySelector(".maxAltitude"), m);
-/*
-sliderOutPut(document.querySelector("#minStrength"), document.querySelector(".minStrength"));
-sliderOutPut(document.querySelector("#maxStrength"), document.querySelector(".maxStrength"));
-sliderOutPut(document.querySelector("#minStamina"), document.querySelector(".minStamina"));
-sliderOutPut(document.querySelector("#maxStamina"), document.querySelector(".maxStamina"));
-sliderOutPut(document.querySelector("#minDifficulty"), document.querySelector(".minDifficulty"));
-sliderOutPut(document.querySelector("#maxDifficulty"), document.querySelector(".maxDifficulty"));
-sliderOutPut(document.querySelector("#minLandscape"), document.querySelector(".minLandscape"));
-sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".maxLandscape"));
- */
 
 (function() {
 
@@ -455,26 +437,6 @@ sliderOutPut(document.querySelector("#maxLandscape"), document.querySelector(".m
     $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerLandscape);
 
 })();
-
-/*
-function sliderOutPutWithValue(outputId, inputClass, messaurment) {
-    const value = outputId;
-    const input = inputClass;
-    value.textContent = input.value;
-   // input.addEventListener("change", (event) => {
-    //    value.textContent = event.target.value + messaurment;
-   // });
-}
-function sliderOutPut(outputId, inputClass) {
-    const value = outputId;
-    const input = inputClass;
-    value.textContent = input.value;
-    input.addEventListener("change", (event) => {
-        value.textContent = event.target.value;
-    });
-}
-
- */
 
 
 function filter() {
