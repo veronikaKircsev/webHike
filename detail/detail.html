@@ -53,9 +53,9 @@
                 </td>
                 <td><div id="duration">
                     <input class="min" type="range" min="0" max="24" value="0" step="0.50"/>
-                    <input class="max" type="range" min="0" max="24" value="1" step="0.50"/>
+                    <input class="max" type="range" min="0" max="24" value="24" step="0.50"/>
                     <label id="minValue">0 hours</label>
-                    <label id="maxValue">1 hours</label>
+                    <label id="maxValue">24 hours</label>
                 </div>
                 </td>
             </tr>
@@ -66,9 +66,9 @@
                 </td>
                 <td><div id="distance">
                     <input class="minDistance" type="range" min="0" max="100" value="0" step="0.10"/>
-                    <input class="maxDistance" type="range" min="0" max="100" value="5" step="0.10"/>
+                    <input class="maxDistance" type="range" min="0" max="100" value="100" step="0.10"/>
                     <label id="minDistance">0 km</label>
-                    <label id="maxDistance">5 km</label>
+                    <label id="maxDistance">100 km</label>
                 </div>
                 </td>
             </tr>
@@ -79,9 +79,9 @@
                 </td>
                 <td><div id="altitude">
                     <input class="minAltitude" type="range" min="0" max="5000" value="0" step="1"/>
-                    <input class="maxAltitude" type="range" min="0" max="5000" value="500" step="1"/>
+                    <input class="maxAltitude" type="range" min="0" max="5000" value="5000" step="1"/>
                     <label id="minAltitude">0 m</label>
-                    <label id="maxAltitude">500 m</label>
+                    <label id="maxAltitude">5000 m</label>
                 </div>
                 </td>
             </tr>
@@ -92,9 +92,9 @@
                 </td>
                 <td><div id="strength">
                     <input class="minStrength" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxStrength" type="range" min="0" max="5" value="1" step="1"/>
+                    <input class="maxStrength" type="range" min="0" max="5" value="5" step="1"/>
                     <label id="minStrength">0</label>
-                    <label id="maxStrength">1</label>
+                    <label id="maxStrength">5</label>
                 </div>
                 </td>
             </tr>
@@ -105,9 +105,9 @@
                 </td>
                 <td><div id="stamina">
                     <input class="minStamina" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxStamina" type="range" min="0" max="5" value="1" step="1"/>
+                    <input class="maxStamina" type="range" min="0" max="5" value="5" step="1"/>
                     <label id="minStamina">0</label>
-                    <label id="maxStamina">1</label>
+                    <label id="maxStamina">5</label>
                 </div>
                 </td>
             </tr>
@@ -118,9 +118,9 @@
                 </td>
                 <td><div id="difficulty">
                     <input class="minDifficulty" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxDifficulty" type="range" min="0" max="5" value="1" step="1"/>
+                    <input class="maxDifficulty" type="range" min="0" max="5" value="5" step="1"/>
                     <label id="minDifficulty">0</label>
-                    <label id="maxDifficulty">1</label>
+                    <label id="maxDifficulty">5</label>
                 </div>
                 </td>
             </tr>
@@ -131,9 +131,9 @@
                 </td>
                 <td><div id="landscape">
                     <input class="minLandscape" type="range" min="0" max="5" value="0" step="1"/>
-                    <input class="maxLandscape" type="range" min="0" max="5" value="1" step="1"/>
+                    <input class="maxLandscape" type="range" min="0" max="5" value="5" step="1"/>
                     <label id="minLandscape">0</label>
-                    <label id="maxLandscape">1</label>
+                    <label id="maxLandscape">5</label>
                 </div>
                 </td>
             </tr>
@@ -144,31 +144,31 @@
         </tr>
 
             <tr><td>
-                <input type="checkbox" id="january" name="month" value="january">
+                <input type="checkbox" id="january" name="month" value="january" checked>
                 <label for="january"> January</label><br>
-                <input type="checkbox" id="february" name="month" value="february">
+                <input type="checkbox" id="february" name="month" value="february" checked>
                 <label for="february">February</label><br>
-                <input type="checkbox" id="march" name="month" value="march">
+                <input type="checkbox" id="march" name="month" value="march" checked>
                 <label for="march">March</label><br>
-                <input type="checkbox" id="april" name="month" value="april">
+                <input type="checkbox" id="april" name="month" value="april" checked>
                 <label for="april">April</label><br>
-                <input type="checkbox" id="may" name="month" value="may">
+                <input type="checkbox" id="may" name="month" value="may" checked>
                 <label for="may">May</label><br>
-                <input type="checkbox" id="june" name="month" value="june">
+                <input type="checkbox" id="june" name="month" value="june" checked>
                 <label for="june">June</label><br>
             </td>
                 <td>
-                    <input type="checkbox" id="july" name="month" value="july">
+                    <input type="checkbox" id="july" name="month" value="july" checked>
                     <label for="july">July</label><br>
-                    <input type="checkbox" id="august" name="month" value="august">
+                    <input type="checkbox" id="august" name="month" value="august" checked>
                     <label for="august">August</label><br>
-                    <input type="checkbox" id="september" name="month" value="september">
+                    <input type="checkbox" id="september" name="month" value="september" checked>
                     <label for="september">September</label><br>
-                    <input type="checkbox" id="october" name="month" value="october">
+                    <input type="checkbox" id="october" name="month" value="october" checked>
                     <label for="october">October</label><br>
-                    <input type="checkbox" id="november" name="month" value="november">
+                    <input type="checkbox" id="november" name="month" value="november" checked>
                     <label for="november">November</label><br>
-                    <input type="checkbox" id="december" name="month" value="december">
+                    <input type="checkbox" id="december" name="month" value="december" checked>
                     <label for="december">December</label><br>
 
                 </td>
