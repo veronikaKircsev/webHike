@@ -89,7 +89,6 @@ function fetchHike() {
                     cDuration.appendChild(duration);
                     cDuration.style.display = 'flex';
                     cDuration.style.alignItems = 'center';
-                    cDuration.style.gap = '10px';
                     box2.appendChild(cDuration);
 
                     const cLength = document.createElement('div');
@@ -112,7 +111,6 @@ function fetchHike() {
                     box2.appendChild(cLength);
                     cLength.style.display = 'flex';
                     cLength.style.alignItems = 'center';
-                    cLength.style.gap = '5px';
 
                     const cAltitude = document.createElement('div');
                     const altitudeImg = new Image();
@@ -134,7 +132,6 @@ function fetchHike() {
                     box2.appendChild(cAltitude);
                     cAltitude.style.display = 'flex';
                     cAltitude.style.alignItems = 'center';
-                    cAltitude.style.gap = '10px';
 
                     const box3 = document.createElement('div');
                     box3.className = 'info2';
@@ -157,7 +154,6 @@ function fetchHike() {
                     for (let i = 1; i <= t; i++){
                         const tImage = new Image();
                         tImage.src = tIcon;
-                        tImage.style.height = '40px';
                         technique.appendChild(tImage);
                     }
                     box3.appendChild(technique);
@@ -171,7 +167,6 @@ function fetchHike() {
                     for (let i = 1; i <= s; i++){
                         const sImg = new Image();
                         sImg.src = "../image/icons8-fitness-85.png";
-                        sImg.style.height = '40px';
                         stamina.appendChild(sImg);
                     }
                     box3.appendChild(stamina);
@@ -194,7 +189,6 @@ function fetchHike() {
                     for (let i = 1; i <= st; i++){
                         const stImg = new Image();
                         stImg.src = sIcon;
-                        stImg.style.height = '40px';
                         strength.appendChild(stImg);
                     }
                     box3.appendChild(strength);
@@ -218,12 +212,9 @@ function fetchHike() {
                     for (let i = 1; i <= l; i++){
                         const lImg = new Image();
                         lImg.src = lIcon;
-                        lImg.style.height = '40px';
                         landscape.appendChild(lImg);
                     }
                     box3.appendChild(landscape);
-
-
 
                     list.appendChild(name);
                     list.appendChild(myMap);
@@ -231,12 +222,6 @@ function fetchHike() {
                     list.appendChild(img);
                     list.appendChild(box2);
                     list.appendChild(box3);
-
-
-
-
-
-
 
                     const start = item.starting_point.split(', ');
                     const ref = document.querySelector('#drive');

@@ -40,7 +40,7 @@ body {
 
 #navBar > div > a {
     font-family: "Carter One";
-    font-size: 1rem;
+    font-size: 40px;
     color: white;
     text-decoration-line:none;
     align-self: flex-end;
@@ -57,6 +57,9 @@ body {
 #dHike{
     display: flex;
     flex-direction: column;
+    position: absolute;
+    width: 50%;
+    margin-top: 200px;
 }
 
 .hikeContainer:hover > a > img {
@@ -109,11 +112,7 @@ body {
     font-family: "Archivo Black";
 
 }
-#dHike{
-    position: absolute;
-    width: 50%;
-    margin-top: 200px;
-}
+
 .monthsList {
     grid-area: 1/3/1/3;
     display: flex;
@@ -167,6 +166,7 @@ body {
     grid-column-start: 2;
     margin-top: 100px;
     width: 400px;
+    display: none;
 }
 .filter > table {
     margin: 20px;
@@ -271,6 +271,54 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
     z-index: 2;
 }
 
+/* Proof of concept for Firefox */
+@-moz-document url-prefix() {
+    .rangeslider::before{
+        content:'';
+        width:100%;
+        height:2px;
+        background: #1B1A17;
+        display:block;
+        position: absolute;
+        top:16px;
+    }
+
+    input[type='range']:nth-child(1){
+        position:absolute;
+        top:20px !important;
+        overflow:visible !important;
+        height:0;
+    }
+
+    input[type='range']:nth-child(2){
+        position:absolute;
+        top:20px !important;
+        overflow:visible !important;
+        height:0;
+    }
+    input[type='range']::-moz-range-thumb {
+        position: relative;
+        height: 15px;
+        width: 15px;
+        background: #272829;
+        border: 1px solid #272829;
+        border-radius: 25px;
+        z-index: 1;
+    }
+
+    input[type='range']:nth-child(1)::-moz-range-thumb {
+        transform: translateY(-0px);
+    }
+    input[type='range']:nth-child(2)::-moz-range-thumb {
+        transform: translateY(-0px);
+    }
+    input[type='range']::-moz-range-track {
+        width: 200px;
+        height: 2px;
+        background: #272829;
+    }
+}
+
 #duration{
     position: relative;
     height: 45px;
@@ -368,6 +416,60 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
 #altitude input{
     position: absolute;
     align-self: center;
+}
+
+
+@media (max-width: 1105px) {
+    body {
+        background-image: url("../image/mountain-4385430_1920.jpg");
+        background-attachment: fixed;
+        display: flex;
+    }
+
+
+    .monthsList > li{
+        font-size: 10px;
+    }
+    .monthsList {
+        font-size: 6px;
+    }
+    .filter{
+        order: 3;
+        margin-top: 200px;
+        width: 60%;
+        z-index: 10;
+        margin-left: 100px;
+    }
+
+    .hikeContainer {
+        width: 110%;
+        position: relative;
+
+    }
+    .hikeContainer > a > img {
+        height: 75px;
+        width: 130px;
+
+    }
+
+    .hikeContainer > a > div{
+        font-size: 10px;
+    }
+    .dhike {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 570px) {
+    .hikeContainer {
+        width: 130%;
+    }
+    #toggleFilter{
+        width: 22px;
+        height: 22px;
+        background-size: 22px, 22px;
+    }
+
 }
 
 

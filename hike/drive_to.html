@@ -61,6 +61,12 @@
             margin: 10px;
         }
 
+        @media print {
+            #navBar{
+                display: none;
+            }
+        }
+
     </style>
 
 </head>
@@ -68,8 +74,8 @@
 <div id="navBar">
     <div>
         <img src="../image/icons8-mountain-100-transformed.png" alt="Let's Hike logo" height="96%">
-
     </div>
+    <img src="../image/icons8-print-48.png" alt="print" onclick="print()" height="96%">
 
 </div>
 

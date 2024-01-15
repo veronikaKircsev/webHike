@@ -436,8 +436,19 @@ function toggleFilter() {
 
     $('input[type="range"]').on( 'input', rangeInputChangeEventHandlerLandscape);
 
+    filterMonthChecked();
+
 })();
 
+function filterMonthChecked () {
+    const currentMonth = new Date().getMonth();
+    const monthElem = document.getElementsByName('month');
+    for (let i = 0; i < monthElem.length; i++){
+        if (i === currentMonth) {
+            monthElem[i].checked = true;
+        }
+    }
+}
 
 function filter() {
     var list = document.getElementById('dHike');
@@ -510,6 +521,11 @@ function filter() {
         console.log("after all other filters", show)
 
         hike.style.display = show ? 'grid' : 'none';
+        const winWith = window.screen.width
+        if (winWith < 1100) {
+            const filter = document.querySelector(".filter");
+            filter.style.display = 'none';
+        }
     }
 }
 
