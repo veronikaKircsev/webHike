@@ -19,8 +19,12 @@
 
 <!-- Add an input field for the search query -->
 <div>
+    <div class="searchParamBox">
+    <div class="searchParam"></div>
+    <button class="searchParamDelete" onclick="fetchShortList(''); deleteParam()">clear all</button>
+    </div>
     <label for="searchInput"></label>
-<input type="text" id="searchInput" class="fix" placeholder="Search by name, place or region">
+<input type="text" id="searchInput" class="searchInput" placeholder="Search by name, place or region">
 </div>
 
 <!-- Display the filtered results in this container -->

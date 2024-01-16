@@ -7,6 +7,7 @@ function fetchShortList(filter) {
             return response.json();
         })
         .then(data => {
+            console.log('klikkkkk');
             const list = document.getElementById('dHike');
             list.innerHTML = ''; // Clear existing list items, if any
 
@@ -180,6 +181,11 @@ function filterData() {
     }
 }
 
+function deleteParam() {
+    const search = document.querySelector('.searchParam');
+    search.textContent = '';
+}
+
 document.addEventListener("keydown", function (event) {
     if (event.key === "Enter")
         filterData();
@@ -190,10 +196,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const paramValue = urlParams.get('param');
 
 window.onload = function() {
+    const search = document.querySelector('.searchParam');
 if (paramValue === null) {
     fetchShortList('');
 
 } else {
+    search.textContent = 'Your search: ' + paramValue;
     fetchShortList(paramValue);
 }
 }
@@ -201,8 +209,9 @@ if (paramValue === null) {
 var lastScroll = 0;
 
 window.onscroll = function() {
-    var fixedElement = document.querySelector('.fix');
+    var fixedElement = document.querySelector('.searchInput');
     const fixedNav = document.querySelector('.nav');
+    const fixedSearchParamBox = document.querySelector('.searchParamBox');
 
 
 
@@ -218,15 +227,18 @@ window.onscroll = function() {
             lastScroll = currentScroll;
             fixedElement.classList.add('fixed');
             fixedNav.classList.add('fixedNav');
+            fixedSearchParamBox.classList.add('fixedSearchParamBox');
         } else {
             lastScroll = currentScroll;
             fixedElement.classList.remove('fixed');
             fixedNav.classList.remove('fixedNav');
+            fixedSearchParamBox.classList.remove('fixedSearchParamBox');
         }
     } else {
         lastScroll = currentScroll;
         fixedElement.classList.remove('fixed');
         fixedNav.classList.remove('fixedNav');
+        fixedSearchParamBox.classList.remove('fixedSearchParamBox');
     }
 };
 function toggleFilter() {

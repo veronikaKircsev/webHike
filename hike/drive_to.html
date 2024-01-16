@@ -93,7 +93,6 @@
 
             const myLocation = new L.Marker([latitude, longitude]).addTo(map);
             const start = getQueryParam('start').split(',');
-            console.log(start);
             const startLocation = new L.Marker([start[0], start[1]]).addTo(map);
 
             const linePoints = [[start[0], start[1]],[latitude,longitude]];

@@ -40,7 +40,6 @@ background-color: #F6F1EE;
 }
 
 #selected{
-
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-rows: 100px 100px 200px 50px 50px 100px 50px 100px 200px;
@@ -59,7 +58,6 @@ background-color: #F6F1EE;
     color: #1B1A17;
 }
 .location{
-
     font-size: 30px;
     grid-area: 2/1/2/1;
     margin-left: 20px;
@@ -69,12 +67,15 @@ background-color: #F6F1EE;
     font-family: "Pt Sans";
     font-weight: bold;     
 }
-#ww_da6967281f185{
+#ww_b873594926175 {
     height: 100%;
     max-width: 200%;
     grid-area: 3/2/3/2;
     padding: 20px;
     border-radius: 10px;
+}
+#ww_b873594926175 > .ww-box > .ww_name {
+    display: none;
 }
 #map{
     grid-area: 3/1/6/2;
@@ -100,7 +101,6 @@ background-color: #F6F1EE;
     margin-left: 20px;
     width: 90%;
     border-radius: 10px;
-
 }
 
 #tour-months {
@@ -216,10 +216,10 @@ background-color: #F6F1EE;
     padding: 20px;
 }
 @media (max-width: 750px) {
-    #ww_da6967281f185 > .ww-box > .ww_noselect{
+    #ww_b873594926175 > .ww-box > .ww_noselect{
         display: none;
     }
-    #ww_da6967281f185 > .ww-box >.ww_delimiter {
+    #ww_b873594926175 > .ww-box >.ww_delimiter {
         display: none;
     }
     .tour-month {

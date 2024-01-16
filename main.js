@@ -49,13 +49,16 @@ function fetchMonth(hikeId, element) {
             return response.json();
         })
         .then(data => {
-            //const list = document.getElementById('hike');
-           // list.innerHTML = ''; // Clear existing list items, if any
 
+            const mon = new Date().getMonth() + 1;
             data.forEach(item => {
                     const month = document.createElement('li');
                 if (item.hikeid === hikeId) {
                     month.textContent = item.monthname;
+                    if (item.monthid === mon){
+                        month.style.color = "#CC8100";
+                    }
+
                 element.appendChild(month);
                 }
 

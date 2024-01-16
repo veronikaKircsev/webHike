@@ -47,7 +47,7 @@ app.get('/short-info-db', async (req, res) => {
 app.get('/month-db', async (req, res) => {
     try {
         const client = await pool.connect();
-        const result = await client.query("select monthName, hikeId from hikes.month");
+        const result = await client.query("select * from hikes.month");
         client.release();
         res.send(result.rows);
     } catch (err) {
