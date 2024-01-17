@@ -207,27 +207,42 @@ if (paramValue === null) {
 }
 
 var lastScroll = 0;
+let controlIfWasDisplayed = false;
 
 window.onscroll = function() {
-    var fixedElement = document.querySelector('.searchInput');
+    const fixedElement = document.querySelector('.searchInput');
     const fixedNav = document.querySelector('.nav');
     const fixedSearchParamBox = document.querySelector('.searchParamBox');
+    const fixedFilter = document.querySelector('.filter');
 
 
 
     // Distance from the top of the document to the top of the fixed element
     var distanceToTop = fixedElement.offsetTop;
+    let currentPosition = fixedFilter.offsetTop;
 
     let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
-    //console.log(currentScroll +'current ' + lastScroll + 'last');
-
     // Check if the user has scrolled past the top of the fixed element
     if (window.scrollY > distanceToTop) {
+        if (display === false && controlIfWasDisplayed === false) {
+            fixedFilter.classList.add('filterFix');
+            fixedFilter.style.position = "fixed";
+            fixedFilter.style.marginTop = '100px';
+            fixedFilter.style.marginLeft = '62.5%';
+        }
+        if (display === true && controlIfWasDisplayed === false) {
+                fixedFilter.style.marginTop = currentFilterPosition + 100 + 'px';
+                fixedFilter.style.position = 'relative';
+                fixedFilter.style.marginLeft = 0;
+        }
+
+
         if (currentScroll > 0 && lastScroll >= currentScroll) {
             lastScroll = currentScroll;
             fixedElement.classList.add('fixed');
             fixedNav.classList.add('fixedNav');
             fixedSearchParamBox.classList.add('fixedSearchParamBox');
+
         } else {
             lastScroll = currentScroll;
             fixedElement.classList.remove('fixed');
@@ -239,14 +254,35 @@ window.onscroll = function() {
         fixedElement.classList.remove('fixed');
         fixedNav.classList.remove('fixedNav');
         fixedSearchParamBox.classList.remove('fixedSearchParamBox');
+        fixedFilter.classList.remove('filterFix');
+        if (fixedFilter.style.marginLeft === '62.5%') {
+            fixedFilter.style.marginLeft = 0;
+        }
+        if (controlIfWasDisplayed === false) {
+            fixedFilter.style.position = "static";
+            fixedFilter.style.marginTop = '100px';
+        }
+
+        if (display === true) {
+            controlIfWasDisplayed = true;
+        }
+
     }
 };
+let currentFilterPosition;
+let display = false;
 function toggleFilter() {
     var x = document.querySelector(".filter");
+    currentFilterPosition = window.scrollY;
     if (x.style.display === "none") {
         x.style.display = "block";
+        display = true;
+
     } else {
         x.style.display = "none";
+        display = false;
+        controlIfWasDisplayed = false;
+        currentFilterPosition = 0;
     }
 }
 
