@@ -190,6 +190,9 @@ body {
     display: none;
 }
 .filterFix {
+    margin-top: 100px;
+    position: fixed;
+    margin-left: 62.5%;
     z-index: 4;
 }
 .filter > table {

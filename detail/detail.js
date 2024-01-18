@@ -216,6 +216,7 @@ window.onscroll = function() {
     const fixedFilter = document.querySelector('.filter');
 
 
+   // document.querySelectorAll('div').forEach(elem => elem.style.display = "none")
 
     // Distance from the top of the document to the top of the fixed element
     var distanceToTop = fixedElement.offsetTop;
@@ -225,15 +226,14 @@ window.onscroll = function() {
     // Check if the user has scrolled past the top of the fixed element
     if (window.scrollY > distanceToTop) {
         if (display === false && controlIfWasDisplayed === false) {
-            fixedFilter.classList.add('filterFix');
-            fixedFilter.style.position = "fixed";
-            fixedFilter.style.marginTop = '100px';
-            fixedFilter.style.marginLeft = '62.5%';
+                fixedFilter.classList.add('filterFix');
+                fixedFilter.style.position = "fixed";
+
         }
         if (display === true && controlIfWasDisplayed === false) {
                 fixedFilter.style.marginTop = currentFilterPosition + 100 + 'px';
-                fixedFilter.style.position = 'relative';
-                fixedFilter.style.marginLeft = 0;
+                fixedFilter.style.position = 'static';
+                fixedFilter.classList.remove('filterFix');
         }
 
 
@@ -255,9 +255,6 @@ window.onscroll = function() {
         fixedNav.classList.remove('fixedNav');
         fixedSearchParamBox.classList.remove('fixedSearchParamBox');
         fixedFilter.classList.remove('filterFix');
-        if (fixedFilter.style.marginLeft === '62.5%') {
-            fixedFilter.style.marginLeft = 0;
-        }
         if (controlIfWasDisplayed === false) {
             fixedFilter.style.position = "static";
             fixedFilter.style.marginTop = '100px';
