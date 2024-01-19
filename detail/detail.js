@@ -216,8 +216,6 @@ window.onscroll = function() {
     const fixedFilter = document.querySelector('.filter');
 
 
-   // document.querySelectorAll('div').forEach(elem => elem.style.display = "none")
-
     // Distance from the top of the document to the top of the fixed element
     var distanceToTop = fixedElement.offsetTop;
     let currentPosition = fixedFilter.offsetTop;

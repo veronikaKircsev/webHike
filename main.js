@@ -24,8 +24,6 @@ function fetchImageNameList() {
                 img.src = base64;
 
                 hike.className = "indexhike";
-                //hike.appendChild(name);
-                //hike.appendChild(img);
                 const tag = document.createElement('a');
                 tag.href = `hike/hike.html?selectedElement=${item.name}`;
                 tag.title = item.name;

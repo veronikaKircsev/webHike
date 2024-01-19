@@ -19,11 +19,12 @@ body {
     width: 100%;
     gap: 3rem;
     grid-row-start: 1;
-    z-index: 5;
+    z-index: 6;
 }
 
 .fixedNav {
     background-color: #B2A59B;
+    z-index: 10;
 
 }
 
@@ -188,12 +189,13 @@ body {
     margin-top: 100px;
     width: 400px;
     display: none;
+    z-index: 5;
 }
 .filterFix {
     margin-top: 100px;
     position: fixed;
     margin-left: 62.5%;
-    z-index: 4;
+
 }
 .filter > table {
     margin: 20px;
